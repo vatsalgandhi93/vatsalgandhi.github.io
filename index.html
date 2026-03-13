@@ -3,216 +3,624 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vatsal Gandhi | Portfolio</title>
+    <title>Vatsal Gandhi | Business Intelligence & Data Analytics</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Custom Color Palette */
             --bg-primary: #FBF7EF;
             --bg-secondary: #F7EEE0;
             --text-accent: #777869;
             --text-main: #2F241B;
             --text-darkest: #231B18;
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-primary);
             color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(251, 247, 239, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(119, 120, 105, 0.2);
         }
 
-        header {
-            text-align: center;
-            border-bottom: 2px solid var(--text-accent);
-            padding-bottom: 20px;
-            margin-bottom: 40px;
-        }
-
-        header h1 {
-            color: var(--text-darkest);
-            font-size: 2.5rem;
-            margin: 0 0 10px 0;
+        .nav-brand {
             font-weight: 700;
+            color: var(--text-darkest);
+            text-decoration: none;
+            font-size: 1.2rem;
         }
 
-        .contact-info {
-            color: var(--text-accent);
-            font-size: 1rem;
-            font-weight: 400;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
         }
 
-        .summary {
-            font-size: 1.1rem;
-            text-align: center;
-            margin-bottom: 40px;
+        .nav-links a {
+            text-decoration: none;
             color: var(--text-main);
-            font-weight: 300;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color var(--transition-speed);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-accent);
+        }
+
+        /* Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
         section {
-            background-color: var(--bg-secondary);
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 6px rgba(35, 27, 24, 0.05);
+            padding: 100px 0;
         }
 
-        h2 {
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
             color: var(--text-darkest);
-            font-size: 1.8rem;
-            margin-top: 0;
-            border-bottom: 1px solid var(--text-accent);
-            padding-bottom: 10px;
-        }
-
-        h3 {
-            color: var(--text-main);
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-
-        .meta-info {
-            color: var(--text-accent);
-            font-size: 0.95rem;
-            font-style: italic;
-            margin-bottom: 15px;
-        }
-
-        ul {
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        .skills-category {
             font-weight: 600;
+        }
+
+        .section-header p {
+            color: var(--text-accent);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-top: 80px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
             color: var(--text-darkest);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            color: var(--text-accent);
+            font-weight: 400;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        .hero-tags {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-tags span {
+            background-color: var(--bg-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid rgba(119, 120, 105, 0.2);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+            border: 2px solid var(--text-darkest);
+        }
+
+        .btn-primary {
+            background-color: var(--text-darkest);
+            color: var(--bg-primary);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--text-darkest);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-darkest);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--text-darkest);
+            color: var(--bg-primary);
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-stats {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .stat-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-item h4 {
+            font-size: 1.2rem;
+            color: var(--text-darkest);
+        }
+
+        .stat-item p {
+            color: var(--text-accent);
+            font-size: 0.9rem;
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+        }
+
+        .job-card {
+            background-color: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+            transition: transform var(--transition-speed);
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(35, 27, 24, 0.05);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .job-title {
+            font-size: 1.4rem;
+            color: var(--text-darkest);
+            font-weight: 600;
+        }
+
+        .job-company {
+            color: var(--text-accent);
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        .job-date {
+            background-color: var(--bg-primary);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .job-card ul {
+            padding-left: 1.2rem;
+            color: var(--text-main);
+        }
+
+        .job-card li {
+            margin-bottom: 0.8rem;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .skill-category h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-darkest);
+            border-bottom: 2px solid var(--text-accent);
+            padding-bottom: 0.5rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-category li {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 12px;
+            height: 100%;
+        }
+
+        .project-card h3 {
+            color: var(--text-darkest);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Education */
+        .edu-card {
+            border-left: 3px solid var(--text-darkest);
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .edu-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-darkest);
+        }
+
+        /* Contact */
+        .contact-content {
+            text-align: center;
+            background-color: var(--text-darkest);
+            color: var(--bg-primary);
+            padding: 4rem 2rem;
+            border-radius: 12px;
+        }
+
+        .contact-content h2 {
+            color: var(--bg-primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--bg-secondary);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color var(--transition-speed);
+        }
+
+        .contact-links a:hover {
+            color: #fff;
         }
 
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 2rem;
             color: var(--text-accent);
             font-size: 0.9rem;
-            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            .job-header { flex-direction: column; gap: 1rem; }
+            .nav-links { display: none; } /* Add a hamburger menu for mobile in production */
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1>Vatsal Gandhi</h1>
-            <div class="contact-info">
-                Columbia, MD | (813) 585-7346 | vatsalgandhi93@gmail.com | LinkedIn
-            </div>
-        </header>
-
-        <div class="summary">
-            <p>Lead Business Intelligence Analyst with an extensive experience of delivering reporting suites for tech consulting, retail, healthcare, and telecommunication industries. All-rounded professional with expertise in Tableau, Looker, Power BI and DOMO. Subject matter expert for Tableau GenAI - Tableau Pulse.</p>
+    <nav>
+        <a href="#" class="nav-brand">Vatsal Gandhi</a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
         </div>
+    </nav>
 
-        <section id="skills">
-            <h2>Technical Skills</h2>
-            <ul>
-                <li><span class="skills-category">Core Skills:</span> Python, SQL, Data Visualization, Statistics, ETL, dbt</li>
-                <li><span class="skills-category">Data Visualization Tools:</span> Tableau, PowerBI, DOMO, Looker, Python</li>
-                <li><span class="skills-category">Analytical & Statistical Tools:</span> MS Excel, Microsoft Azure ML studio, Alteryx, Google Analytics Database: Snowflake, Databricks, Google Cloud Platform, AWS Redshift, Teradata</li>
-            </ul>
+    <div class="container">
+        <section class="hero" id="home">
+            <h1>Vatsal Gandhi</h1>
+            <h2>Lead Business Intelligence Analyst specializing in turning complex datasets into executive insights.</h2>
+            
+            <div class="hero-tags">
+                <span>Tableau GenAI & Pulse SME</span>
+                <span>Tech Consulting</span>
+                <span>Retail & Healthcare</span>
+                <span>Telecommunications</span>
+            </div>
+
+            <div class="btn-group">
+                <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                <a href="#experience" class="btn btn-secondary">View Experience</a>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="section-header">
+                <p>About</p>
+                <h2>Where data, strategy & execution meet.</h2>
+            </div>
+            
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>I operate at the intersection of data architecture, business intelligence, and AI integration — taking full ownership of moving organizations forward across the tech consulting, retail, healthcare, and telecommunication industries.</p>
+                    <p>As a Lead Business Intelligence Analyst, I am an all-rounded professional with deep expertise in <strong>Tableau, Looker, Power BI, and DOMO</strong>. I currently serve as a Subject Matter Expert for Tableau GenAI (Tableau Pulse) and lead the integration of Gemini tools into modern Business Intelligence workstreams to enhance analytical speed and depth.</p>
+                </div>
+                
+                <div class="about-stats">
+                    <div class="stat-item">
+                        <h4>Clarksburg, MD</h4>
+                        <p>Current Location</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>9+ Years Experience</h4>
+                        <p>Data & Analytics</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>Snowflake & Tableau</h4>
+                        <p>Certified Professional</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="experience">
-            <h2>Relevant Work Experience</h2>
-            
-            <div class="job">
-                <h3>Senior Business Intelligence Analyst</h3>
-                <div class="meta-info">Blend360 LLC, Columbia, MD | Nov 2022-present</div>
-                <ul>
-                    <li><strong>Verizon Partnership:</strong> Accountable for marketing teams' insight generation.</li>
-                    <li><strong>AI Integration:</strong> Responsible for integrating Gemini tools on Business Intelligence workstreams.</li>
-                    <li><strong>Platform Migrations:</strong> Accountable for weekly releases, making sure the data integrity is maintained on platform migrations.</li>
-                    <li><strong>Proof of Concepts:</strong> Responsible for adding proof of concepts on new BI tools.</li>
-                    <li><strong>Under Armour:</strong> Crafted, designed, and led the development of the Consignment modelling Reporting Suite and Invoice Reconciliation Reporting Suite for El Corte Ingles, a Spanish retailer. Saved 20 man-hours every week and made sure of the availability of inventory.</li>
-                    <li><strong>Executive Insight Dashboard:</strong> Built the Executive Insight Dashboard for the Under Armour Senior leadership team to track the business in a holistic view. Integrated Tableau Pulse with MS Teams to deliver insights in the chat.</li>
-                    <li><strong>Customer Loyalty Rewards Dashboard:</strong> Conceptualized the product, from building the data model to creating the dashboard in Tableau for Xfinity Rewards to monitor rewards performance, and defined strategies for future offerings.</li>
-                    <li><strong>Cost Transparency Dashboards Suite:</strong> Completely accountable for building a data model and eight different dashboards using Tableau. These serve five different insurance providers across the United States and have saved millions of dollars in costs for Blue Cross Blue Shield and its customers.</li>
-                    <li><strong>Deals Pipeline Monitoring:</strong> Led the development of ETL and Dashboard for the HubSpot deal pipeline in DOMO for the Senior Leadership team at Blend360, resulting in a reduction of 5 man-hours of work every week. Co-authored "BI Product Delivery Made Seamless" to leverage Figma for BI product delivery.</li>
-                </ul>
+            <div class="section-header">
+                <p>Work History</p>
+                <h2>Professional Experience</h2>
             </div>
 
-            <div class="job">
-                <h3>Business Intelligence Analyst - Marketing</h3>
-                <div class="meta-info">Steel Supplements, Sarasota, Florida | July 2020-Nov 2022</div>
-                <ul>
-                    <li>Built a data pipeline to extract, process, and visualize a large volume of data for e-commerce and ensured quality checks. Scheduled ETL jobs to develop insights for daily sales and track the matrices.</li>
-                    <li>Developed market mix modeling for the monthly marketing spend, resulting in an increase of RoAS by 14%.</li>
-                    <li>Conducted ad-hoc analysis to in-depth analysis for marketing and finance teams and presented key findings to stakeholders.</li>
-                    <li>Built revenue forecasting models with help of FB prophet with an RMSE value of approximately $5k (less than 7%).</li>
-                    <li>Marketing: Introduced Cohort Analysis, Market Basket Analysis, Customer LTV, RoAs, CPM, CTR monitoring.</li>
-                    <li>Detailed analysis of the order prices and proposed the new range of products to improve the overall order value and increase the revenue by 10% per month.</li>
-                    <li>Conducted A/B Testing for promotional emails to check the effectiveness of emails.</li>
-                </ul>
+            <div class="experience-timeline">
+                
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Senior Business Intelligence Analyst</div>
+                            <div class="job-company">Blend360 LLC · Columbia, MD</div>
+                        </div>
+                        <div class="job-date">Nov 2022 – Present</div>
+                    </div>
+                    <ul>
+                        <li><strong>Verizon Partnership:</strong> Accountable for marketing teams' insight generation and driving data-led strategy.</li>
+                        <li><strong>AI Integration:</strong> Responsible for integrating Gemini tools on Business Intelligence workstreams.</li>
+                        <li><strong>Platform Migrations:</strong> Accountable for weekly releases, making sure data integrity is maintained on platform migrations.</li>
+                        <li><strong>Under Armour:</strong> Crafted, designed, and led the development of the Consignment modelling Reporting Suite and Invoice Reconciliation Reporting Suite for El Corte Ingles. Saved 20 man-hours weekly and ensured inventory availability. Built Executive Insight Dashboard integrated with MS Teams via Tableau Pulse.</li>
+                        <li><strong>Customer Loyalty Rewards:</strong> Conceptualized product and built data models/dashboards in Tableau for Xfinity Rewards.</li>
+                        <li><strong>Cost Transparency Dashboards:</strong> Accountable for building data models and 8 dashboards using Tableau, serving 5 insurance providers and saving millions of dollars for Blue Cross Blue Shield.</li>
+                        <li><strong>Deals Pipeline Monitoring:</strong> Led development of ETL and Dashboard for HubSpot deal pipeline in DOMO. Co-authored "BI Product Delivery Made Seamless" using Figma.</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Business Intelligence Analyst - Marketing</div>
+                            <div class="job-company">Steel Supplements · Sarasota, FL</div>
+                        </div>
+                        <div class="job-date">Jul 2020 – Nov 2022</div>
+                    </div>
+                    <ul>
+                        <li>Built a data pipeline to extract, process, and visualize large volumes of e-commerce data. Scheduled ETL jobs for daily sales tracking.</li>
+                        <li>Developed market mix modeling for monthly marketing spend, increasing RoAS by 14%.</li>
+                        <li>Built revenue forecasting models utilizing FB Prophet with an RMSE value of approximately $5k (less than 7%).</li>
+                        <li>Introduced Cohort Analysis, Market Basket Analysis, Customer LTV, RoAs, CPM, and CTR monitoring.</li>
+                        <li>Analyzed order prices and proposed product ranges to improve overall order value, increasing revenue by 10% per month.</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Data Science Intern - Revenue Management</div>
+                            <div class="job-company">The Hertz Corporation · Estero, FL</div>
+                        </div>
+                        <div class="job-date">May 2019 – Aug 2019</div>
+                    </div>
+                    <ul>
+                        <li>Curated machine learning model using Random Forest classifier to identify illegitimate customer bookings.</li>
+                        <li>Improved fleet utilization and pricing model efficiency, saving $41k within a week of implementation.</li>
+                        <li>Conducted hypothesis testing to analyze the effectiveness of discounts offered.</li>
+                    </ul>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Analyst</div>
+                            <div class="job-company">Reliance Industries Ltd · India</div>
+                        </div>
+                        <div class="job-date">Jul 2014 – Jul 2018</div>
+                    </div>
+                    <ul>
+                        <li>Utilized Tableau and SQL in data collection, data analysis, and reporting to procure data from database structures and provide solutions to site problems promptly.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="section-header">
+                <p>Core Competencies</p>
+                <h2>Skills & Expertise</h2>
             </div>
 
-            <div class="job">
-                <h3>Data Science Intern - Revenue Management</h3>
-                <div class="meta-info">The Hertz Corporation, Estero, Florida | May 2019-Aug 2019</div>
-                <ul>
-                    <li>Curated machine learning model using Random Forest classifier to identify illegitimate customer bookings from future bookings.</li>
-                    <li>Data visualization through Tableau to understand the booking patterns and seasonality of customers' bookings.</li>
-                    <li>Improved utilization of fleet and helped the pricing models to work efficiently. Saved $41k within a week of implementation.</li>
-                    <li>Hypothesis testing to analyze the effectiveness of the discounts offered and presented learnings to the Leadership team.</li>
-                </ul>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Core Skills</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>Data Visualization</li>
+                        <li>Statistics</li>
+                        <li>ETL</li>
+                        <li>dbt</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Data Visualization</h3>
+                    <ul>
+                        <li>Tableau (GenAI & Pulse)</li>
+                        <li>PowerBI</li>
+                        <li>DOMO</li>
+                        <li>Looker</li>
+                        <li>Figma for BI</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Analytics & Cloud</h3>
+                    <ul>
+                        <li>Snowflake</li>
+                        <li>Databricks</li>
+                        <li>Google Cloud Platform</li>
+                        <li>AWS Redshift</li>
+                        <li>Azure ML Studio</li>
+                        <li>Teradata</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="section-header">
+                <p>Selected Work</p>
+                <h2>Key Projects</h2>
             </div>
 
-            <div class="job">
-                <h3>Analyst</h3>
-                <div class="meta-info">Reliance Industries Ltd, India | July 2014-July 2018</div>
-                <ul>
-                    <li>Utilized Tableau and SQL in data collection, data analysis, and reporting to procure data from database structures to report and provide solutions to different site problems promptly.</li>
-                </ul>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>GenAI Integration for BI Workstreams</h3>
+                    <p>Led the integration of Google Gemini tools into established Business Intelligence workflows to accelerate insight generation and enhance data integrity during complex platform migrations for the Verizon partnership.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Executive Insight & Pulse Integration</h3>
+                    <p>Engineered holistic Executive Insight Dashboards for Under Armour's Senior Leadership. Pioneered the integration of Tableau Pulse with MS Teams to deliver real-time, AI-driven data insights directly in executive chats.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>BCBS Cost Transparency Suite</h3>
+                    <p>Designed the overarching data model and a suite of 8 specialized Tableau dashboards serving 5 US insurance providers, successfully identifying and saving millions of dollars in operational costs for Blue Cross Blue Shield.</p>
+                </div>
             </div>
         </section>
 
         <section id="education">
-            <h2>Education</h2>
-            
-            <div class="job">
-                <h3>Master of Science in Data Science</h3>
-                <div class="meta-info">University of South Florida, Tampa, FL | December 2019</div>
-                <ul>
-                    <li>GPA: 4/4</li>
-                    <li>Course work: Engineering Analytics | Statistical Design Models | Design of Industrial Info Systems | Data warehousing</li>
-                </ul>
+            <div class="section-header">
+                <p>Academic Background</p>
+                <h2>Education</h2>
             </div>
 
-            <div class="job">
+            <div class="edu-card">
+                <h3>Master of Science in Data Science</h3>
+                <p style="color: var(--text-accent); margin-bottom: 0.5rem;">University of South Florida, Tampa, FL | GPA: 4.0/4.0 | Dec 2019</p>
+                <p><strong>Coursework:</strong> Engineering Analytics, Statistical Design Models, Design of Industrial Info Systems, Data Warehousing.</p>
+            </div>
+
+            <div class="edu-card">
                 <h3>Bachelor of Mechanical Engineering</h3>
-                <div class="meta-info">Maharaja Sayajirao University of Baroda, India | May 2014</div>
-                <ul>
-                    <li>GPA: 3.64/4</li>
-                </ul>
+                <p style="color: var(--text-accent);">Maharaja Sayajirao University of Baroda, India | GPA: 3.64/4.0 | May 2014</p>
             </div>
         </section>
 
+        <section id="contact">
+            <div class="contact-content">
+                <h2>Let's Connect.</h2>
+                <p>Actively building scalable data solutions and driving strategy through actionable insights.</p>
+                
+                <div class="contact-links">
+                    <a href="mailto:vatsalgandhi93@gmail.com">vatsalgandhi93@gmail.com</a>
+                    <a href="tel:+18135857346">(813) 585-7346</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        </section>
     </div>
 
     <footer>
-        <p>&copy; 2026 Vatsal Gandhi. Built for GitHub Pages.</p>
+        <p>&copy; 2026 Vatsal Gandhi · Business Intelligence Analyst · Clarksburg, MD</p>
     </footer>
 
 </body>
 </html>
+
+```
