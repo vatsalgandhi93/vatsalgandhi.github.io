@@ -3,155 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio | Data Analytics Consulting</title>
+    <title>Vatsal Gandhi | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Basic clean styling */
+        :root {
+            /* Your Custom Color Palette */
+            --bg-primary: #FBF7EF;
+            --bg-secondary: #F7EEE0;
+            --text-accent: #777869;
+            --text-main: #2F241B;
+            --text-darkest: #231B18;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: #f9f9f9;
         }
-        header {
-            background-color: #2c3e50;
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        nav {
-            background: #34495e;
-            color: #fff;
-            padding: 0.5rem;
-            text-align: center;
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 0 15px;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #1abc9c;
-        }
+
         .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px 0;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid var(--text-accent);
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            color: var(--text-darkest);
+            font-size: 2.5rem;
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+
+        .contact-info {
+            color: var(--text-accent);
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .summary {
+            font-size: 1.1rem;
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--text-main);
+            font-weight: 300;
+        }
+
         section {
-            background: #fff;
-            margin-bottom: 20px;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            background-color: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(35, 27, 24, 0.05);
         }
+
         h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #1abc9c;
-            padding-bottom: 5px;
+            color: var(--text-darkest);
+            font-size: 1.8rem;
+            margin-top: 0;
+            border-bottom: 1px solid var(--text-accent);
+            padding-bottom: 10px;
         }
-        .skills-list {
-            list-style: none;
-            padding: 0;
+
+        h3 {
+            color: var(--text-main);
+            font-size: 1.3rem;
+            margin-bottom: 5px;
         }
-        .skills-list li {
-            background: #ecf0f1;
-            display: inline-block;
-            margin: 5px;
-            padding: 10px 15px;
-            border-radius: 3px;
-        }
-        .project {
+
+        .meta-info {
+            color: var(--text-accent);
+            font-size: 0.95rem;
+            font-style: italic;
             margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eee;
         }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .skills-category {
+            font-weight: 600;
+            color: var(--text-darkest);
+        }
+
         footer {
             text-align: center;
             padding: 20px;
-            background: #2c3e50;
-            color: #fff;
-            margin-top: 20px;
+            color: var(--text-accent);
+            font-size: 0.9rem;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Vatsal Gandhi</h1>
-        <p>Data Analytics Consultant</p>
-    </header>
-
-    <nav>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-    </nav>
-
     <div class="container">
-        
-        <section id="about">
-            <h2>About Me</h2>
-            <p>Hello! I am a data analyst specializing in transforming complex datasets into actionable business intelligence. With a strong foundation in modern data architecture and visualization, I help businesses uncover insights and optimize their operations.</p>
-            
-            <h3>Certifications & Core Technologies</h3>
-            <ul class="skills-list">
-                <li>Snowflake SnowPro Core Certified</li>
-                <li>Tableau Certified Data Analyst</li>
-                <li>SQL & Data Modeling</li>
-                <li>Business Intelligence</li>
-                <li>Data Science Concepts</li>
-            </ul>
-        </section>
+        <header>
+            <h1>Vatsal Gandhi [cite: 1]</h1>
+            <div class="contact-info">
+                Columbia, MD | (813) 585-7346 | vatsalgandhi93@gmail.com | LinkedIn [cite: 2]
+            </div>
+        </header>
 
-        <section id="services">
-            <h2>Consulting Services</h2>
-            <p>I partner with organizations to build scalable data solutions. My focus areas include:</p>
+        <div class="summary">
+            <p>Lead Business Intelligence Analyst with an extensive experience of delivering reporting suites for tech consulting, retail, healthcare, telecommunication industy. [cite: 3] All-rounded professional with expertise in Tableau, Looker, Power BI and DOMO. [cite: 4] Subject matter expert for Tableau GenAI - Tableau Pulse. [cite: 5]</p>
+        </div>
+
+        <section id="skills">
+            <h2>Technical Skills [cite: 6]</h2>
             <ul>
-                <li><strong>Cloud Data Warehousing:</strong> Designing and optimizing data pipelines and architecture.</li>
-                <li><strong>Interactive Dashboards:</strong> Building intuitive, high-performance visualizations for stakeholders.</li>
-                <li><strong>Data Strategy:</strong> Advising on best practices for data governance, storage, and analysis.</li>
+                <li><span class="skills-category">Core Skills:</span> Python, SQL, Data Visualization, Statistics, ETL, dbt [cite: 7]</li>
+                <li><span class="skills-category">Data Visualization Tools:</span> Tableau, PowerBI, DOMO, Looker, Python [cite: 8]</li>
+                <li><span class="skills-category">Analytical & Statistical Tools:</span> MS Excel, Microsoft Azure ML studio, Alteryx, Google Analytics Database: Snowflake, Databricks, Google Cloud Platform, AWS Redshift, Teradata [cite: 9]</li>
             </ul>
         </section>
 
-        <section id="projects">
-            <h2>Featured Projects</h2>
+        <section id="experience">
+            <h2>Relevant Work Experience [cite: 12]</h2>
             
-            <div class="project">
-                <h3>Project Title 1: Cloud Data Migration</h3>
-                <p>A brief description of how you optimized a data pipeline, the technologies you used, and the measurable business impact it had.</p>
-                <a href="#">View Repository or Dashboard</a>
+            <div class="job">
+                <h3>Senior Business Intelligence Analyst [cite: 11]</h3>
+                <div class="meta-info">Blend360 LLC, Columbia, MD [cite: 10] | Nov 2022-present [cite: 13]</div>
+                <ul>
+                    <li>Under Armour: Crafted, Designed and led the development of the Consignment modelling Reporting Suite and Invoice Reconciliation Reporting Suite for El Corte Ingles, a Spanish retailer. [cite: 14] Saved 20 manhours every week and also made sure the availability of inventory. [cite: 15]</li>
+                    <li>Executive Insight Dashboard: Built the Executive Insight Dashboard for Under Armour Senior leadership team to track the business in a holistic view. [cite: 16] Integrated Tableau pulse with MS teams to deliver the insights in the chat. [cite: 17]</li>
+                    <li>Customer Loyalty Rewards Dashboard: Conceptualized the product, from building the data model to creating the dashboard in Tableau for Xfinity Rewards to monitor rewards performance, and defined strategies for future offerings. [cite: 18]</li>
+                    <li>Cost Transparency Dashboards Suite: Completely accountable for building a data model and eight different dashboards using Tableau. [cite: 19] These serve five different insurance providers across the United States and have saved millions of dollars in costs for Blue Cross Blue Shield and its customers. [cite: 20]</li>
+                    <li>Deals Pipeline Monitoring: Led the development of ETL and Dashboard for the HubSpot deal pipeline in DOMO for the Senior Leadership team at Blend360, resulting in a reduction of 5 man-hours of work every week. [cite: 21] Co-authored "BI Product Delivery Made Seamless" to leverage Figma for BI product delivery. [cite: 22]</li>
+                </ul>
             </div>
 
-            <div class="project">
-                <h3>Project Title 2: Executive Sales Dashboard</h3>
-                <p>A summary of a complex visualization you built, highlighting how it improved decision-making for leadership.</p>
-                <a href="#">View Repository or Dashboard</a>
+            <div class="job">
+                <h3>Business Intelligence Analyst - Marketing [cite: 24]</h3>
+                <div class="meta-info">Steel Supplements, Sarasota, Florida [cite: 23] | July 2020-Nov 2022 [cite: 25]</div>
+                <ul>
+                    <li>Built a data pipeline to extract, process, and visualize a large volume of data for e-commerce and ensured quality checks. [cite: 26] Scheduled ETL jobs to develop insights for daily sales and track the matrices. [cite: 27] Developed market mix modeling for the monthly marketing spend, resulting in an increase of RoAS by 14%. [cite: 28] Conducting ad-hoc analysis to in-depth analysis for marketing and finance teams and presented key findings to stakeholders. [cite: 29] Build revenue forecasting models with help of FB prophet with an RMSE value of approximately $5k (less than 7%). [cite: 30]</li>
+                    <li>Marketing: Introduced Cohort Analysis, Market Basket Analysis, Customer LTV, RoAs, CPM, CTR monitoring [cite: 31] Detailed analysis of the order prices and proposed the new range of products to improve the overall order value and increase the revenue by 10% per month. [cite: 32] Conduct A/B Testing for promotional emails to check the effectiveness of emails. [cite: 33]</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <h3>Data Science Intern - Revenue Management [cite: 35]</h3>
+                <div class="meta-info">The Hertz Corporation, Estero, Florida [cite: 34] | May 2019-Aug 2019 [cite: 36]</div>
+                <ul>
+                    <li>Curated machine learning model using Random Forest classifier to identify the illegitimate customer bookings from future bookings. [cite: 37] Data visualization through tableau to understand the booking patterns and seasonality of customers' bookings. [cite: 38] Improved utilization of fleet and helped the pricing models to work efficiently. Saved $41k within a week of implementation. [cite: 39] Hypothesis testing to analyze the effectiveness of the discounts offered and Present learnings to the Leadership team. [cite: 40]</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <h3>Analyst [cite: 42]</h3>
+                <div class="meta-info">Reliance Industries Ltd, India [cite: 41] | July 2014-July 2018 [cite: 41]</div>
+                <ul>
+                    <li>Utilized Tableau and SQL in data collection, data analysis, and reporting to procure data from database structures to report and provide solutions to different site problems promptly. [cite: 43]</li>
+                </ul>
             </div>
         </section>
 
-        <section id="contact">
-            <h2>Get In Touch</h2>
-            <p>If you're interested in collaborating or need guidance on your data infrastructure, I'd love to hear from you.</p>
-            <p>
-                <strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a><br>
-                <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a><br>
-                <strong>GitHub:</strong> <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a>
-            </p>
+        <section id="education">
+            <h2>Education [cite: 44]</h2>
+            
+            <div class="job">
+                <h3>Master of Science in Data Science [cite: 47]</h3>
+                <div class="meta-info">University of South Florida, Tampa, FL [cite: 45] | December 2019 [cite: 46]</div>
+                <ul>
+                    <li>GPA: 4/4 [cite: 48]</li>
+                    <li>Course work: Engineering Analytics | Statistical Design Models | Design of Industrial Info Systems | Data warehousing [cite: 49]</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <h3>Bachelor of Mechanical Engineering [cite: 52]</h3>
+                <div class="meta-info">Maharaja Sayajirao University of Baroda, India [cite: 50] | May 2014 [cite: 51]</div>
+                <ul>
+                    <li>GPA: 3.64/4 [cite: 53]</li>
+                </ul>
+            </div>
         </section>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 Your Name. All rights reserved.</p>
+        <p>&copy; 2026 Vatsal Gandhi. Built for GitHub Pages.</p>
     </footer>
 
 </body>
