@@ -3,682 +3,628 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vatsal Gandhi | Lead BI Analyst & Data Engineer</title>
+  <title>Vatsal Gandhi | Lead BI Analyst</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
-
   <style>
+    /* ===== RESET ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg:       #080810;
-      --surface:  #10101c;
-      --surface2: #16162a;
-      --border:   #1e1e36;
-      --accent:   #6c8ff5;
-      --accent2:  #b87fff;
-      --accent3:  #52d9c8;
-      --text:     #ededf5;
-      --muted:    #7070a0;
-      --tag-bg:   #16162e;
-      --tag-color:#9090c8;
-      --nav-h:    64px;
-      --serif:    'DM Serif Display', Georgia, serif;
-      --sans:     'DM Sans', system-ui, sans-serif;
-      --mono:     'Space Mono', monospace;
-      --r:        12px;
-      --glow:     0 0 40px rgba(108,143,245,0.12);
+      --bg:      #080b10;
+      --surface: #0f1318;
+      --surf2:   #141920;
+      --border:  #1d2530;
+      --accent:  #4f9cf9;
+      --accent2: #8b73f5;
+      --green:   #3ecf8e;
+      --text:    #e6eaf2;
+      --muted:   #6b7a96;
+      --nav-h:   64px;
+      --serif:   'DM Serif Display', Georgia, serif;
+      --sans:    'DM Sans', system-ui, sans-serif;
+      --mono:    'Space Mono', monospace;
+      --r:       12px;
+      --glow:    0 0 48px rgba(79,156,249,0.13);
     }
     html { scroll-behavior: smooth; }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--sans);
-      font-weight: 300;
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); font-weight: 300; line-height: 1.6; overflow-x: hidden; }
     a { color: inherit; text-decoration: none; }
-    img { display: block; max-width: 100%; }
     ::-webkit-scrollbar { width: 5px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
-    /* noise */
+    /* noise overlay */
     body::before {
-      content: '';
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-      background-size: 256px;
+      content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      background-size: 200px;
     }
-
-    /* ambient orbs */
-    .orb {
-      position: fixed; border-radius: 50%; pointer-events: none; z-index: 0;
-      filter: blur(100px); opacity: 0.07;
-    }
-    .orb1 { width: 600px; height: 600px; background: var(--accent); top: -200px; right: -150px; }
-    .orb2 { width: 500px; height: 500px; background: var(--accent2); bottom: -150px; left: -100px; }
 
     /* ===== NAV ===== */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      height: var(--nav-h);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 60px;
-      background: rgba(8,8,16,0.8);
-      backdrop-filter: blur(16px) saturate(1.4);
+      height: var(--nav-h); display: flex; align-items: center; justify-content: space-between;
+      padding: 0 56px; background: rgba(8,11,16,0.9); backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
     }
     .nav-logo { font-family: var(--mono); font-size: 0.82rem; color: var(--accent); letter-spacing: 0.06em; }
-    .nav-links { display: flex; gap: 36px; }
-    .nav-links a {
-      font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      color: var(--muted); transition: color 0.2s;
-    }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
-    .nav-cta {
-      font-family: var(--mono); font-size: 0.72rem;
-      padding: 8px 18px; border-radius: 8px;
-      border: 1px solid var(--accent); color: var(--accent);
-      transition: all 0.2s;
+
+    /* ===== SHARED SECTION ===== */
+    section { position: relative; z-index: 1; padding: 100px 80px; }
+    section + section { border-top: 1px solid var(--border); }
+    .section-label {
+      font-family: var(--mono); font-size: 0.68rem; color: var(--accent);
+      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 12px;
+      display: flex; align-items: center; gap: 10px;
     }
-    .nav-cta:hover { background: var(--accent); color: #fff; }
+    .section-label::before { content: ''; display: inline-block; width: 22px; height: 1px; background: var(--accent); }
+    h2 { font-family: var(--serif); font-size: clamp(2rem, 3.2vw, 3rem); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 56px; }
 
     /* ===== HERO ===== */
     #hero {
-      position: relative; z-index: 1;
-      min-height: 100vh;
-      display: grid; grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      padding: calc(var(--nav-h) + 80px) 80px 80px;
-      gap: 80px;
+      position: relative; z-index: 1; min-height: 100vh;
+      display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center;
+      padding: calc(var(--nav-h) + 80px) 80px 80px; gap: 80px;
     }
-    .hero-kicker {
-      font-family: var(--mono); font-size: 0.72rem;
-      color: var(--accent3); letter-spacing: 0.18em; text-transform: uppercase;
-      margin-bottom: 22px;
-      display: flex; align-items: center; gap: 14px;
+    #hero::after {
+      content: ''; position: absolute; top: -150px; right: -100px;
+      width: 800px; height: 800px; border-radius: 50%; pointer-events: none;
+      background: radial-gradient(circle, rgba(79,156,249,0.07) 0%, transparent 65%);
     }
-    .hero-kicker span { display: inline-block; width: 36px; height: 1px; background: var(--accent3); }
-    h1 {
-      font-family: var(--serif);
-      font-size: clamp(3.2rem, 5vw, 5.8rem);
-      line-height: 1.02; letter-spacing: -0.02em;
-      margin-bottom: 28px;
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: 0.7rem; color: var(--accent);
+      letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 22px;
+      display: flex; align-items: center; gap: 12px;
     }
+    .hero-eyebrow::before { content: ''; display: inline-block; width: 28px; height: 1px; background: var(--accent); }
+    h1 { font-family: var(--serif); font-size: clamp(3.2rem, 5vw, 5.8rem); line-height: 1.02; letter-spacing: -0.02em; margin-bottom: 26px; }
     h1 em { font-style: italic; color: var(--accent2); }
-    .hero-desc {
-      font-size: 1.05rem; color: var(--muted);
-      max-width: 500px; line-height: 1.8; margin-bottom: 36px;
-    }
-    .hero-desc strong { color: var(--text); font-weight: 500; }
-    .certs {
-      display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 44px;
-    }
+    .hero-sub { font-size: 1.05rem; color: var(--muted); max-width: 500px; margin-bottom: 32px; line-height: 1.75; }
+    .cert-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
     .cert-badge {
-      font-family: var(--mono); font-size: 0.65rem;
-      padding: 5px 14px; border-radius: 100px;
-      background: var(--tag-bg); border: 1px solid var(--border);
-      color: var(--accent3); letter-spacing: 0.06em;
+      font-family: var(--mono); font-size: 0.64rem; padding: 5px 13px;
+      border-radius: 100px; border: 1px solid rgba(62,207,142,0.3);
+      background: rgba(62,207,142,0.07); color: var(--green); letter-spacing: 0.04em;
     }
-    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
     .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 30px; border-radius: var(--r);
-      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em;
-      transition: all 0.25s; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px; padding: 12px 28px;
+      border-radius: var(--r); font-size: 0.84rem; font-weight: 500;
+      letter-spacing: 0.04em; transition: all 0.22s; cursor: pointer; border: none;
     }
-    .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); }
-    .btn-primary:hover { background: #5a7ee8; box-shadow: 0 0 28px rgba(108,143,245,0.45); transform: translateY(-2px); }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #3d8ef0; box-shadow: 0 0 28px rgba(79,156,249,0.4); transform: translateY(-2px); }
     .btn-ghost { background: transparent; color: var(--text); border: 1px solid var(--border); }
     .btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
-    /* hero right panel */
-    .hero-panel {
-      position: relative; z-index: 2;
-      display: flex; flex-direction: column; gap: 16px;
+    /* Hero right panel */
+    .hero-visual { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 16px; }
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .stat-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 20px 22px;
+      transition: border-color 0.22s, box-shadow 0.22s;
     }
-    .panel-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      padding: 20px 24px;
-      transition: border-color 0.25s, box-shadow 0.25s;
+    .stat-card:hover { border-color: rgba(79,156,249,0.35); box-shadow: var(--glow); }
+    .stat-num { font-family: var(--mono); font-size: 1.6rem; color: var(--accent); font-weight: 700; line-height: 1; margin-bottom: 4px; }
+    .stat-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .tech-pill-row { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 6px; }
+    .tech-pill {
+      font-size: 0.75rem; padding: 5px 13px; border-radius: 100px;
+      background: var(--surf2); border: 1px solid var(--border); color: var(--muted); transition: all 0.2s;
     }
-    .panel-card:hover { border-color: rgba(108,143,245,0.35); box-shadow: var(--glow); }
-    .panel-title {
-      font-family: var(--mono); font-size: 0.62rem;
-      color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .stats-row { display: flex; gap: 24px; }
-    .stat { text-align: center; }
-    .stat-n { font-family: var(--mono); font-size: 1.7rem; font-weight: 700; color: var(--accent); line-height: 1; }
-    .stat-l { font-size: 0.68rem; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.07em; }
-    .skills-chips { display: flex; flex-wrap: wrap; gap: 6px; }
-    .chip {
-      font-size: 0.75rem; padding: 4px 12px;
-      border-radius: 100px; background: var(--tag-bg);
-      border: 1px solid var(--border); color: var(--tag-color);
-    }
-    .chip.hi { border-color: rgba(108,143,245,0.4); color: var(--accent); }
-
-    /* ===== SECTION BASE ===== */
-    section { position: relative; z-index: 1; padding: 100px 80px; }
-    section + section { border-top: 1px solid var(--border); }
-    .sec-label {
-      font-family: var(--mono); font-size: 0.68rem;
-      color: var(--accent); letter-spacing: 0.16em; text-transform: uppercase;
-      margin-bottom: 12px;
-      display: flex; align-items: center; gap: 12px;
-    }
-    .sec-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--accent); }
-    h2 {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 3.5vw, 3.2rem);
-      line-height: 1.08; letter-spacing: -0.02em;
-      margin-bottom: 56px;
-    }
+    .tech-pill:hover { border-color: var(--accent); color: var(--accent); }
 
     /* ===== ABOUT ===== */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
-    .about-body p { color: var(--muted); font-size: 1rem; line-height: 1.85; margin-bottom: 18px; }
+    .about-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: start; }
+    .about-body p { color: var(--muted); font-size: 1.02rem; line-height: 1.82; margin-bottom: 18px; }
     .about-body p strong { color: var(--text); font-weight: 500; }
-    .about-meta { margin-top: 32px; display: flex; flex-direction: column; gap: 10px; }
-    .meta-row {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 0.82rem; color: var(--muted);
-    }
-    .meta-ic {
-      width: 30px; height: 30px; border-radius: 7px;
-      background: var(--tag-bg); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
+    .about-meta { margin-top: 32px; display: flex; flex-direction: column; gap: 11px; }
+    .meta-item { display: flex; align-items: center; gap: 12px; font-size: 0.84rem; color: var(--muted); }
+    .meta-icon {
+      width: 30px; height: 30px; background: var(--surf2); border: 1px solid var(--border);
+      border-radius: 7px; display: flex; align-items: center; justify-content: center;
       font-size: 0.85rem; flex-shrink: 0;
     }
-    .hi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .hi-card {
+    .about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .hl-card {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 26px 22px;
-      transition: border-color 0.25s, box-shadow 0.25s;
+      border-radius: var(--r); padding: 24px 22px;
+      transition: border-color 0.22s, box-shadow 0.22s;
     }
-    .hi-card:hover { border-color: var(--accent); box-shadow: var(--glow); }
-    .hi-n { font-family: var(--mono); font-size: 2rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 6px; }
-    .hi-d { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; line-height: 1.4; }
+    .hl-card:hover { border-color: var(--accent); box-shadow: var(--glow); }
+    .hl-num { font-family: var(--mono); font-size: 1.9rem; color: var(--accent); font-weight: 700; line-height: 1; margin-bottom: 7px; }
+    .hl-desc { font-size: 0.72rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
 
     /* ===== EXPERIENCE ===== */
-    .timeline { display: flex; flex-direction: column; gap: 6px; }
-    .exp {
+    .timeline { display: flex; flex-direction: column; gap: 4px; }
+    .exp-item {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 34px 38px;
-      display: grid; grid-template-columns: 10px 1fr;
-      gap: 28px;
-      transition: border-color 0.25s, box-shadow 0.25s;
+      border-radius: var(--r); padding: 32px 36px;
+      display: grid; grid-template-columns: 12px 1fr; gap: 26px;
+      transition: border-color 0.22s, box-shadow 0.22s;
     }
-    .exp:hover { border-color: rgba(108,143,245,0.4); box-shadow: var(--glow); }
+    .exp-item:hover { border-color: rgba(79,156,249,0.35); box-shadow: var(--glow); }
     .exp-dot {
-      width: 10px; height: 10px; border-radius: 50%;
-      background: var(--accent); margin-top: 10px;
-      box-shadow: 0 0 10px var(--accent); flex-shrink: 0;
+      width: 12px; height: 12px; border-radius: 50%; background: var(--accent);
+      margin-top: 8px; box-shadow: 0 0 8px var(--accent); flex-shrink: 0;
     }
-    .exp-co { font-family: var(--mono); font-size: 0.68rem; color: var(--accent3); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
-    .exp-role { font-family: var(--serif); font-size: 1.45rem; margin-bottom: 6px; }
-    .exp-meta { font-size: 0.76rem; color: var(--muted); margin-bottom: 18px; display: flex; gap: 14px; flex-wrap: wrap; }
-    .exp-body { color: var(--muted); font-size: 0.9rem; line-height: 1.75; }
-    .exp-body ul { padding-left: 18px; margin-top: 10px; }
-    .exp-body ul li { margin-bottom: 7px; }
-    .exp-body li strong { color: var(--text); font-weight: 500; }
-    .exp-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+    .exp-company { font-family: var(--mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3px; }
+    .exp-role { font-family: var(--serif); font-size: 1.35rem; color: var(--text); margin-bottom: 5px; }
+    .exp-meta { font-size: 0.76rem; color: var(--muted); margin-bottom: 16px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .exp-desc { color: var(--muted); font-size: 0.88rem; line-height: 1.75; }
+    .exp-desc ul { padding-left: 18px; margin-top: 10px; }
+    .exp-desc ul li { margin-bottom: 7px; }
+    .exp-desc strong { color: #c8d0e0; font-weight: 500; }
+    .exp-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 18px; }
+    .tag {
+      font-family: var(--mono); font-size: 0.64rem; padding: 4px 12px;
+      border-radius: 100px; background: rgba(79,156,249,0.07);
+      color: #7aabf0; border: 1px solid rgba(79,156,249,0.18);
+    }
 
     /* ===== SKILLS ===== */
-    .skills-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .sk-cat {
+    .skills-outer { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .skill-cat {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 28px 26px;
+      transition: border-color 0.22s, box-shadow 0.22s;
+    }
+    .skill-cat:hover { border-color: var(--accent); box-shadow: var(--glow); }
+    .skill-cat-title {
+      font-family: var(--mono); font-size: 0.63rem; color: var(--accent);
+      letter-spacing: 0.12em; text-transform: uppercase;
+      margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border);
+    }
+    .skill-list { display: flex; flex-direction: column; gap: 11px; }
+    .skill-row { display: flex; align-items: center; gap: 12px; }
+    .skill-name { font-size: 0.83rem; color: var(--text); min-width: 165px; }
+    .skill-bar { flex: 1; height: 3px; background: var(--border); border-radius: 4px; overflow: hidden; }
+    .skill-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+
+    /* ===== CERTIFICATIONS ===== */
+    .certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .cert-card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--r); padding: 28px 24px;
-      transition: border-color 0.25s, box-shadow 0.25s;
+      display: flex; align-items: center; gap: 18px;
+      transition: border-color 0.22s, box-shadow 0.22s;
     }
-    .sk-cat:hover { border-color: var(--accent); box-shadow: var(--glow); }
-    .sk-cat-title {
-      font-family: var(--mono); font-size: 0.62rem;
-      color: var(--accent); letter-spacing: 0.12em; text-transform: uppercase;
-      margin-bottom: 18px; padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
+    .cert-card:hover { border-color: var(--green); box-shadow: 0 0 32px rgba(62,207,142,0.1); }
+    .cert-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: rgba(62,207,142,0.09); border: 1px solid rgba(62,207,142,0.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0;
     }
-    .sk-list { display: flex; flex-direction: column; gap: 11px; }
-    .sk-row { display: flex; align-items: center; gap: 10px; }
-    .sk-name { font-size: 0.84rem; color: var(--text); min-width: 130px; }
-    .sk-bar { flex: 1; height: 3px; background: var(--border); border-radius: 4px; overflow: hidden; }
-    .sk-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+    .cert-name { font-size: 0.92rem; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+    .cert-issuer { font-size: 0.74rem; color: var(--muted); }
 
     /* ===== EDUCATION ===== */
-    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .edu-timeline { display: flex; flex-direction: column; gap: 0; max-width: 800px; }
+    .edu-entry { display: grid; grid-template-columns: 56px 1fr; }
+    .edu-spine { display: flex; flex-direction: column; align-items: center; padding-top: 32px; }
+    .edu-dot {
+      width: 14px; height: 14px; border-radius: 50%; background: var(--accent);
+      box-shadow: 0 0 10px var(--accent); flex-shrink: 0;
+    }
+    .edu-line { flex: 1; width: 2px; background: var(--border); margin-top: 8px; }
     .edu-card {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 32px;
-      transition: border-color 0.25s, box-shadow 0.25s;
+      border-radius: var(--r); padding: 28px 32px; margin-bottom: 16px;
+      transition: border-color 0.22s, box-shadow 0.22s;
     }
     .edu-card:hover { border-color: var(--accent); box-shadow: var(--glow); }
-    .edu-school { font-family: var(--mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
-    .edu-deg { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 6px; }
-    .edu-year { font-size: 0.78rem; color: var(--muted); margin-bottom: 14px; }
-    .edu-detail { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
-    .edu-gpa {
-      display: inline-block; margin-top: 12px;
-      font-family: var(--mono); font-size: 0.68rem;
-      padding: 4px 12px; border-radius: 100px;
-      background: var(--tag-bg); border: 1px solid var(--border);
-      color: var(--accent3);
+    .edu-year-tag {
+      display: inline-block; font-family: var(--mono); font-size: 0.65rem;
+      padding: 3px 12px; border-radius: 100px;
+      background: rgba(79,156,249,0.08); border: 1px solid rgba(79,156,249,0.2);
+      color: var(--accent); letter-spacing: 0.06em; margin-bottom: 12px;
+    }
+    .edu-school { font-family: var(--mono); font-size: 0.68rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
+    .edu-degree { font-family: var(--serif); font-size: 1.3rem; margin-bottom: 10px; }
+    .edu-detail { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
+    .gpa {
+      display: inline-block; margin-top: 12px; font-family: var(--mono); font-size: 0.7rem;
+      padding: 3px 11px; border-radius: 100px;
+      background: rgba(62,207,142,0.08); border: 1px solid rgba(62,207,142,0.25); color: var(--green);
     }
 
     /* ===== CONTACT ===== */
     #contact { text-align: center; }
-    #contact h2 { margin-bottom: 18px; }
-    .contact-sub { color: var(--muted); font-size: 1rem; max-width: 440px; margin: 0 auto 48px; }
-    .contact-row { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-bottom: 44px; }
+    #contact h2 { margin-bottom: 14px; }
+    .contact-sub { color: var(--muted); font-size: 0.98rem; max-width: 460px; margin: 0 auto 44px; }
+    .contact-cards { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-bottom: 44px; }
     .contact-card {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--r); padding: 22px 30px;
-      display: flex; align-items: center; gap: 14px;
-      min-width: 200px; transition: all 0.25s;
+      display: flex; align-items: center; gap: 14px; min-width: 210px;
+      transition: all 0.22s;
     }
-    .contact-card:hover { border-color: var(--accent); box-shadow: var(--glow); transform: translateY(-4px); }
-    .c-ic {
-      width: 42px; height: 42px; border-radius: 10px;
-      background: var(--tag-bg); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+    .contact-card:hover { border-color: var(--accent); box-shadow: var(--glow); transform: translateY(-3px); }
+    .contact-icon {
+      width: 42px; height: 42px; background: var(--surf2); border: 1px solid var(--border);
+      border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
     }
-    .c-type { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
-    .c-val { font-size: 0.85rem; color: var(--text); font-weight: 500; }
+    .contact-type { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
+    .contact-value { font-size: 0.86rem; color: var(--text); font-weight: 500; }
 
     /* ===== FOOTER ===== */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 80px;
+      border-top: 1px solid var(--border); padding: 28px 80px;
       display: flex; justify-content: space-between; align-items: center;
       font-size: 0.76rem; color: var(--muted);
       position: relative; z-index: 1;
     }
-    .f-mono { font-family: var(--mono); }
+    .footer-mono { font-family: var(--mono); }
 
-    /* ===== FADE IN ===== */
-    .fi { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
-    .fi.on { opacity: 1; transform: translateY(0); }
+    /* ===== ANIMATION ===== */
+    .fade-in { opacity: 0; transform: translateY(22px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
     /* ===== RESPONSIVE ===== */
-    @media (max-width: 1100px) {
-      #hero { grid-template-columns: 1fr; padding: 130px 48px 60px; }
-      .hero-panel { display: none; }
-      .about-grid, .edu-grid { grid-template-columns: 1fr; }
-      .skills-wrap { grid-template-columns: repeat(2, 1fr); }
-      section { padding: 80px 48px; }
-      nav { padding: 0 32px; }
+    @media (max-width: 1024px) {
+      #hero, .about-grid { grid-template-columns: 1fr; }
+      #hero { padding: 120px 40px 60px; }
+      .hero-visual { display: none; }
+      .skills-outer { grid-template-columns: 1fr; }
+      .certs-grid { grid-template-columns: 1fr; }
+      section { padding: 80px 40px; }
+      nav { padding: 0 24px; }
+      .nav-links { gap: 20px; }
     }
-    @media (max-width: 680px) {
-      nav { padding: 0 18px; }
+    @media (max-width: 640px) {
       .nav-links { display: none; }
-      #hero { padding: 100px 24px 40px; }
-      section { padding: 60px 24px; }
-      h1 { font-size: 3rem; }
-      .skills-wrap { grid-template-columns: 1fr; }
-      .hi-grid { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 10px; text-align: center; padding: 20px; }
+      section { padding: 60px 20px; }
+      h1 { font-size: 2.8rem; }
+      footer { flex-direction: column; gap: 10px; text-align: center; padding: 24px; }
+      .edu-timeline { max-width: 100%; }
     }
   </style>
 </head>
 <body>
-  <div class="orb orb1"></div>
-  <div class="orb orb2"></div>
 
-  <!-- NAV -->
-  <nav>
-    <span class="nav-logo">VG · Portfolio</span>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
+<!-- ===== NAV ===== -->
+<nav>
+  <span class="nav-logo">VG · BI &amp; Data</span>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="hero-text fade-in">
+    <div class="hero-eyebrow">Lead Business Intelligence Analyst</div>
+    <h1>Vatsal<br><em>Gandhi</em></h1>
+    <p class="hero-sub">
+      Turning complex data into decisions that matter. End-to-end BI — dashboards, data models, ETL pipelines — across healthcare, retail, telecom, and e-commerce.
+    </p>
+    <div class="cert-row">
+      <span class="cert-badge">✦ SnowPro Core Certified</span>
+      <span class="cert-badge">✦ Tableau Certified Data Analyst</span>
+      <span class="cert-badge">✦ Alteryx Certified</span>
     </div>
-    <a href="https://www.linkedin.com/in/vatsalgandhi93/" target="_blank" class="nav-cta">LinkedIn ↗</a>
-  </nav>
+    <div class="hero-ctas">
+      <a href="#experience" class="btn btn-primary">View Experience →</a>
+      <a href="https://www.linkedin.com/in/vatsalgandhi93/" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+      <a href="mailto:vatsalgandhi93@gmail.com" class="btn btn-ghost">Get in Touch</a>
+    </div>
+  </div>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-text fi">
-      <div class="hero-kicker"><span></span>Lead BI Analyst · Data Engineer</div>
-      <h1>Vatsal<br><em>Gandhi</em></h1>
-      <p class="hero-desc">
-        Turning raw data into <strong>decisions that move businesses</strong>. I build end-to-end
-        BI solutions across tech consulting, retail, healthcare, and telecom —
-        from data models and ETL pipelines to executive dashboards and GenAI-powered insights.
+  <div class="hero-visual">
+    <div class="stat-grid">
+      <div class="stat-card"><div class="stat-num">5+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat-card"><div class="stat-num">4</div><div class="stat-label">Industries Served</div></div>
+      <div class="stat-card"><div class="stat-num">$M+</div><div class="stat-label">Cost Savings Driven</div></div>
+      <div class="stat-card"><div class="stat-num">20h</div><div class="stat-label">Saved / Wk · UA</div></div>
+    </div>
+    <div class="tech-pill-row">
+      <span class="tech-pill">Tableau</span>
+      <span class="tech-pill">Snowflake</span>
+      <span class="tech-pill">dbt</span>
+      <span class="tech-pill">Looker</span>
+      <span class="tech-pill">Python</span>
+      <span class="tech-pill">SQL</span>
+      <span class="tech-pill">Alteryx</span>
+      <span class="tech-pill">Databricks</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="fade-in">
+    <div class="section-label">Background</div>
+    <h2>Where data, strategy<br>&amp; execution meet.</h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-body fade-in">
+      <p>
+        I'm a <strong>Lead Business Intelligence Analyst</strong> with extensive experience delivering reporting suites across tech consulting, retail, healthcare, and telecommunications. Currently based in <strong>Columbia, MD</strong>.
       </p>
-      <div class="certs">
-        <span class="cert-badge">SnowPro Core Certified</span>
-        <span class="cert-badge">Tableau Certified Data Analyst</span>
-        <span class="cert-badge">Alteryx Certified</span>
+      <p>
+        At <strong>Blend360</strong>, I've built high-impact solutions for clients like <strong>Verizon, Under Armour, Xfinity, and Blue Cross Blue Shield</strong> — dashboards serving 100+ stakeholders and data models that have saved millions of dollars in costs.
+      </p>
+      <p>
+        I'm a subject matter expert in <strong>Tableau GenAI (Tableau Pulse)</strong> and <strong>Snowflake Cortex</strong>, and I bring a rare blend of deep technical fluency and business strategy to every engagement.
+      </p>
+      <div class="about-meta">
+        <div class="meta-item"><div class="meta-icon">📍</div>Columbia, MD</div>
+        <div class="meta-item"><div class="meta-icon">🏢</div>Blend360 LLC — Senior BI Analyst (Nov 2022 – Present)</div>
+        <div class="meta-item"><div class="meta-icon">🎓</div>MS Data Science · University of South Florida · GPA 4.0</div>
+        <div class="meta-item"><div class="meta-icon">📧</div>vatsalgandhi93@gmail.com</div>
+        <div class="meta-item"><div class="meta-icon">📞</div>(813) 585-7346</div>
       </div>
-      <div class="hero-btns">
-        <a href="#experience" class="btn btn-primary">View Experience →</a>
-        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+    </div>
+    <div class="about-highlights fade-in">
+      <div class="hl-card"><div class="hl-num">5+</div><div class="hl-desc">Years in BI &amp; Data</div></div>
+      <div class="hl-card"><div class="hl-num">4</div><div class="hl-desc">Industries</div></div>
+      <div class="hl-card"><div class="hl-num">14%</div><div class="hl-desc">RoAS Lift · Steel Supps</div></div>
+      <div class="hl-card"><div class="hl-num">$41k</div><div class="hl-desc">Saved in Week 1 · Hertz</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience">
+  <div class="fade-in">
+    <div class="section-label">Work History</div>
+    <h2>Professional<br>Experience</h2>
+  </div>
+  <div class="timeline">
+
+    <div class="exp-item fade-in">
+      <div class="exp-dot"></div>
+      <div>
+        <div class="exp-company">Blend360 LLC · Columbia, MD</div>
+        <div class="exp-role">Senior Business Intelligence Analyst</div>
+        <div class="exp-meta"><span>Nov 2022 – Present</span><span>·</span><span>Healthcare · Retail · Telecom</span></div>
+        <div class="exp-desc">
+          <ul>
+            <li><strong>Verizon:</strong> Built a reporting solution for Platform Migration catering to <strong>100+ stakeholders</strong>; led migration from Tableau to Looker and Qlik.</li>
+            <li>Built a <strong>hospitality chatbot using Snowflake Cortex</strong> for real-time hotel performance insights and future ratings forecasting.</li>
+            <li><strong>Under Armour:</strong> Designed the <strong>Consignment Modelling</strong> and <strong>Invoice Reconciliation Reporting Suite</strong> for El Corte Inglés — saved <strong>20 man-hours every week</strong>.</li>
+            <li>Built the <strong>Executive Insight Dashboard</strong> for Under Armour senior leadership; integrated <strong>Tableau Pulse</strong> with MS Teams for in-chat insights.</li>
+            <li><strong>Xfinity Rewards:</strong> Conceptualized and built the <strong>Customer Loyalty Rewards Dashboard</strong> from data model to Tableau delivery.</li>
+            <li><strong>Blue Cross Blue Shield:</strong> Solely accountable for <strong>eight Cost Transparency Dashboards</strong> serving five U.S. insurance providers — saved <strong>millions of dollars</strong>.</li>
+            <li><strong>Blend360 Internal:</strong> Led ETL and DOMO dashboard for HubSpot deal pipeline, cutting <strong>5 man-hours/week</strong> for senior leadership.</li>
+            <li>Co-authored <em>"BI Product Delivery Made Seamless"</em> — leveraging Figma for BI collaboration.</li>
+          </ul>
+        </div>
+        <div class="exp-tags">
+          <span class="tag">Tableau</span><span class="tag">Tableau Pulse</span><span class="tag">Looker</span>
+          <span class="tag">Snowflake</span><span class="tag">Snowflake Cortex</span><span class="tag">dbt</span>
+          <span class="tag">DOMO</span><span class="tag">ETL</span><span class="tag">Data Modeling</span>
+        </div>
       </div>
     </div>
 
-    <div class="hero-panel fi">
-      <div class="panel-card">
-        <div class="panel-title">Quick Stats</div>
-        <div class="stats-row">
-          <div class="stat"><div class="stat-n">5+</div><div class="stat-l">Years Exp.</div></div>
-          <div class="stat"><div class="stat-n">4</div><div class="stat-l">Industries</div></div>
-          <div class="stat"><div class="stat-n">3</div><div class="stat-l">Certifications</div></div>
+    <div class="exp-item fade-in">
+      <div class="exp-dot"></div>
+      <div>
+        <div class="exp-company">Steel Supplements · Sarasota, FL</div>
+        <div class="exp-role">Business Intelligence Analyst — Marketing</div>
+        <div class="exp-meta"><span>Jul 2020 – Nov 2022</span><span>·</span><span>E-commerce · Marketing Analytics</span></div>
+        <div class="exp-desc">
+          <ul>
+            <li>Built a <strong>data pipeline</strong> to extract, process, and visualize large-volume e-commerce data with quality checks and scheduled ETL jobs.</li>
+            <li>Developed <strong>market mix modelling</strong> for monthly marketing spend — increased <strong>RoAS by 14%</strong>.</li>
+            <li>Built revenue <strong>forecasting models using FB Prophet</strong> with RMSE of ~$5k (under 7% error).</li>
+            <li>Introduced <strong>Cohort Analysis, Market Basket Analysis, Customer LTV, A/B Testing</strong> for promotional emails.</li>
+            <li>Proposed a new product range from order price analysis — <strong>increased revenue 10% per month</strong>.</li>
+          </ul>
         </div>
-      </div>
-      <div class="panel-card">
-        <div class="panel-title">Core Stack</div>
-        <div class="skills-chips">
-          <span class="chip hi">Tableau</span>
-          <span class="chip hi">Snowflake</span>
-          <span class="chip hi">SQL</span>
-          <span class="chip hi">dbt</span>
-          <span class="chip">Looker</span>
-          <span class="chip">Python</span>
-          <span class="chip">Alteryx</span>
-          <span class="chip">PowerBI</span>
-          <span class="chip">DOMO</span>
-          <span class="chip">Databricks</span>
-        </div>
-      </div>
-      <div class="panel-card">
-        <div class="panel-title">Industry Domains</div>
-        <div class="skills-chips">
-          <span class="chip">Healthcare</span>
-          <span class="chip">Telecom</span>
-          <span class="chip">Retail</span>
-          <span class="chip">E-commerce</span>
-          <span class="chip">Tech Consulting</span>
-        </div>
-      </div>
-      <div class="panel-card">
-        <div class="panel-title">Subject Matter Expert in</div>
-        <div class="skills-chips">
-          <span class="chip hi">Tableau Pulse (GenAI)</span>
-          <span class="chip hi">Snowflake Cortex</span>
+        <div class="exp-tags">
+          <span class="tag">Python</span><span class="tag">FB Prophet</span><span class="tag">Market Mix Modelling</span>
+          <span class="tag">ETL</span><span class="tag">Cohort Analysis</span><span class="tag">A/B Testing</span><span class="tag">SQL</span>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="fi">
-      <div class="sec-label">Background</div>
-      <h2>Where data, strategy<br>&amp; execution meet.</h2>
-    </div>
-    <div class="about-grid fi">
-      <div class="about-body">
-        <p>
-          I'm a <strong>Lead Business Intelligence Analyst</strong> with extensive experience delivering
-          reporting suites for clients across tech consulting, retail, healthcare, and telecommunications.
-          At <strong>Blend360</strong>, I've led high-impact projects for enterprise clients including
-          Verizon, Under Armour, Xfinity, and Blue Cross Blue Shield.
-        </p>
-        <p>
-          I'm an all-rounded professional with deep expertise in <strong>Tableau, Looker, Snowflake,
-          and dbt</strong>, and serve as the subject matter expert for <strong>Tableau GenAI (Tableau Pulse)
-          and Snowflake Cortex</strong> — pushing what's possible at the intersection of BI and AI.
-        </p>
-        <p>
-          I co-authored <em>"BI Product Delivery Made Seamless"</em> to help teams leverage Figma
-          in the BI product delivery process, and hold certifications from Snowflake, Tableau, and Alteryx.
-        </p>
-        <div class="about-meta">
-          <div class="meta-row"><div class="meta-ic">📍</div> Columbia, MD</div>
-          <div class="meta-row"><div class="meta-ic">📧</div> vatsalgandhi93@gmail.com</div>
-          <div class="meta-row"><div class="meta-ic">📞</div> (813) 585-7346</div>
-          <div class="meta-row"><div class="meta-ic">🎓</div> MS Data Science · University of South Florida (GPA 4.0)</div>
+    <div class="exp-item fade-in">
+      <div class="exp-dot"></div>
+      <div>
+        <div class="exp-company">The Hertz Corporation · Estero, FL</div>
+        <div class="exp-role">Data Science Intern — Revenue Management</div>
+        <div class="exp-meta"><span>May 2019 – Aug 2019</span><span>·</span><span>Revenue Management · Machine Learning</span></div>
+        <div class="exp-desc">
+          <ul>
+            <li>Built a <strong>Random Forest classifier</strong> to identify illegitimate customer bookings — saved <strong>$41k within one week</strong> of deployment.</li>
+            <li>Used Tableau to visualize booking patterns and customer seasonality, improving fleet utilization and pricing efficiency.</li>
+          </ul>
         </div>
-      </div>
-      <div class="hi-grid">
-        <div class="hi-card"><div class="hi-n">5+</div><div class="hi-d">Years of BI Experience</div></div>
-        <div class="hi-card"><div class="hi-n">4</div><div class="hi-d">Industries Served</div></div>
-        <div class="hi-card"><div class="hi-n">20h</div><div class="hi-d">Saved weekly · Under Armour</div></div>
-        <div class="hi-card"><div class="hi-n">14%</div><div class="hi-d">RoAS Improvement · Steel Supplements</div></div>
-        <div class="hi-card"><div class="hi-n">$41k</div><div class="hi-d">Saved in week 1 · Hertz Internship</div></div>
-        <div class="hi-card"><div class="hi-n">100+</div><div class="hi-d">Stakeholders served · Verizon</div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="fi">
-      <div class="sec-label">Work History</div>
-      <h2>Professional<br>Experience</h2>
-    </div>
-    <div class="timeline">
-
-      <!-- Blend360 -->
-      <div class="exp fi">
-        <div class="exp-dot"></div>
-        <div>
-          <div class="exp-co">Blend360 LLC · Columbia, MD</div>
-          <div class="exp-role">Senior Business Intelligence Analyst</div>
-          <div class="exp-meta"><span>Nov 2022 – Present</span><span>·</span><span>Tech Consulting · Healthcare · Telecom · Retail</span></div>
-          <div class="exp-body">
-            <p>Lead BI analyst delivering enterprise-grade reporting solutions across marquee clients in multiple industries.</p>
-            <ul>
-              <li><strong>Verizon:</strong> Built a reporting solution catering to 100+ stakeholders for platform migration permissions. Led migration of reporting from Tableau to Looker and Qlik.</li>
-              <li><strong>Under Armour — Consignment &amp; Invoice Suite:</strong> Designed and led the Consignment Modelling and Invoice Reconciliation Reporting Suite for El Corte Inglés (Spain). Saved 20 man-hours per week and ensured inventory availability.</li>
-              <li><strong>Under Armour — Executive Insight Dashboard:</strong> Built a holistic business dashboard for senior leadership, and integrated Tableau Pulse with MS Teams to deliver insights directly in chat.</li>
-              <li><strong>Xfinity Customer Loyalty Rewards:</strong> Conceptualized the product end-to-end — from data model to Tableau dashboard — to monitor rewards performance and define future strategies.</li>
-              <li><strong>Blue Cross Blue Shield — Cost Transparency Suite:</strong> Built a complete data model and 8 dashboards serving 5 insurance providers across the US. Saved millions of dollars in costs.</li>
-              <li><strong>Blend360 Deals Pipeline:</strong> Led ETL and DOMO dashboard development for HubSpot deal pipeline monitoring for senior leadership, reducing 5 man-hours of work weekly.</li>
-              <li>Co-authored <em>"BI Product Delivery Made Seamless"</em> — leveraging Figma for BI product delivery workflows.</li>
-            </ul>
-          </div>
-          <div class="exp-chips">
-            <span class="chip">Tableau</span><span class="chip">Looker</span><span class="chip">Snowflake</span>
-            <span class="chip">dbt</span><span class="chip">DOMO</span><span class="chip">Tableau Pulse</span>
-            <span class="chip">Snowflake Cortex</span><span class="chip">SQL</span><span class="chip">ETL</span><span class="chip">Qlik</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Steel Supplements -->
-      <div class="exp fi">
-        <div class="exp-dot"></div>
-        <div>
-          <div class="exp-co">Steel Supplements · Sarasota, FL</div>
-          <div class="exp-role">Business Intelligence Analyst — Marketing</div>
-          <div class="exp-meta"><span>Jul 2020 – Nov 2022</span><span>·</span><span>E-commerce · Marketing Analytics</span></div>
-          <div class="exp-body">
-            <ul>
-              <li>Built a data pipeline to extract, process, and visualize large-volume e-commerce data with automated quality checks.</li>
-              <li>Developed market mix modeling for monthly marketing spend, <strong>increasing RoAS by 14%</strong>.</li>
-              <li>Built revenue forecasting models using FB Prophet with an RMSE of ~$5k (under 7% error).</li>
-              <li>Proposed new product range from order price analysis, <strong>increasing revenue by 10% per month</strong>.</li>
-              <li>Introduced Cohort Analysis, Market Basket Analysis, Customer LTV, RoAS, CPM, and CTR monitoring.</li>
-              <li>Conducted A/B testing for promotional emails and ad-hoc analysis for marketing and finance teams.</li>
-            </ul>
-          </div>
-          <div class="exp-chips">
-            <span class="chip">Python</span><span class="chip">SQL</span><span class="chip">ETL</span>
-            <span class="chip">FB Prophet</span><span class="chip">Tableau</span><span class="chip">A/B Testing</span>
-            <span class="chip">Market Mix Modeling</span><span class="chip">Google Analytics</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Hertz -->
-      <div class="exp fi">
-        <div class="exp-dot"></div>
-        <div>
-          <div class="exp-co">The Hertz Corporation · Estero, FL</div>
-          <div class="exp-role">Data Science Intern — Revenue Management</div>
-          <div class="exp-meta"><span>May 2019 – Aug 2019</span><span>·</span><span>Transportation · Revenue Management</span></div>
-          <div class="exp-body">
-            <ul>
-              <li>Built a Random Forest classifier to identify illegitimate customer bookings — <strong>saved $41k within the first week</strong> of implementation.</li>
-              <li>Visualized booking patterns and seasonality via Tableau to improve fleet utilization and pricing model efficiency.</li>
-              <li>Conducted hypothesis testing to analyze discount effectiveness and presented findings to the leadership team.</li>
-            </ul>
-          </div>
-          <div class="exp-chips">
-            <span class="chip">Python</span><span class="chip">Random Forest</span><span class="chip">Tableau</span>
-            <span class="chip">Hypothesis Testing</span><span class="chip">Machine Learning</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="fi">
-      <div class="sec-label">Core Competencies</div>
-      <h2>Skills &amp; Expertise</h2>
-    </div>
-    <div class="skills-wrap fi">
-      <div class="sk-cat">
-        <div class="sk-cat-title">Data Visualization</div>
-        <div class="sk-list">
-          <div class="sk-row"><span class="sk-name">Tableau</span><div class="sk-bar"><div class="sk-fill" style="width:97%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">Looker</span><div class="sk-bar"><div class="sk-fill" style="width:88%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">PowerBI</span><div class="sk-bar"><div class="sk-fill" style="width:82%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">DOMO</span><div class="sk-bar"><div class="sk-fill" style="width:80%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">Preset</span><div class="sk-bar"><div class="sk-fill" style="width:72%"></div></div></div>
-        </div>
-      </div>
-      <div class="sk-cat">
-        <div class="sk-cat-title">Data Engineering</div>
-        <div class="sk-list">
-          <div class="sk-row"><span class="sk-name">SQL</span><div class="sk-bar"><div class="sk-fill" style="width:97%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">Snowflake</span><div class="sk-bar"><div class="sk-fill" style="width:95%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">dbt</span><div class="sk-bar"><div class="sk-fill" style="width:90%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">ETL Pipelines</span><div class="sk-bar"><div class="sk-fill" style="width:92%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">Databricks</span><div class="sk-bar"><div class="sk-fill" style="width:78%"></div></div></div>
-        </div>
-      </div>
-      <div class="sk-cat">
-        <div class="sk-cat-title">Programming & Analytics</div>
-        <div class="sk-list">
-          <div class="sk-row"><span class="sk-name">Python</span><div class="sk-bar"><div class="sk-fill" style="width:88%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">Alteryx</span><div class="sk-bar"><div class="sk-fill" style="width:90%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">MS Excel / Azure ML</span><div class="sk-bar"><div class="sk-fill" style="width:85%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">Google Analytics</span><div class="sk-bar"><div class="sk-fill" style="width:80%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">Git</span><div class="sk-bar"><div class="sk-fill" style="width:82%"></div></div></div>
-        </div>
-      </div>
-      <div class="sk-cat">
-        <div class="sk-cat-title">Cloud Platforms</div>
-        <div class="sk-list">
-          <div class="sk-row"><span class="sk-name">Snowflake</span><div class="sk-bar"><div class="sk-fill" style="width:95%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">AWS Redshift</span><div class="sk-bar"><div class="sk-fill" style="width:78%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">Google Cloud (GCP)</span><div class="sk-bar"><div class="sk-fill" style="width:75%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">Databricks</span><div class="sk-bar"><div class="sk-fill" style="width:78%"></div></div></div>
-        </div>
-      </div>
-      <div class="sk-cat">
-        <div class="sk-cat-title">GenAI / Advanced BI</div>
-        <div class="sk-list">
-          <div class="sk-row"><span class="sk-name">Tableau Pulse</span><div class="sk-bar"><div class="sk-fill" style="width:95%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">Snowflake Cortex</span><div class="sk-bar"><div class="sk-fill" style="width:90%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">ML (Random Forest)</span><div class="sk-bar"><div class="sk-fill" style="width:80%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">FB Prophet</span><div class="sk-bar"><div class="sk-fill" style="width:82%"></div></div></div>
-        </div>
-      </div>
-      <div class="sk-cat">
-        <div class="sk-cat-title">Domain Expertise</div>
-        <div class="sk-list">
-          <div class="sk-row"><span class="sk-name">Healthcare</span><div class="sk-bar"><div class="sk-fill" style="width:90%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">Telecom</span><div class="sk-bar"><div class="sk-fill" style="width:88%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">Retail / E-commerce</span><div class="sk-bar"><div class="sk-fill" style="width:92%"></div></div></div>
-          <div class="sk-row"><span class="sk-name">Revenue Management</span><div class="sk-bar"><div class="sk-fill" style="width:85%"></div></div></div>
+        <div class="exp-tags">
+          <span class="tag">Random Forest</span><span class="tag">Machine Learning</span>
+          <span class="tag">Tableau</span><span class="tag">Python</span><span class="tag">Revenue Analytics</span>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- EDUCATION -->
-  <section id="education">
-    <div class="fi">
-      <div class="sec-label">Academic Background</div>
-      <h2>Education &amp;<br>Certifications</h2>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+  <div class="fade-in">
+    <div class="section-label">Core Competencies</div>
+    <h2>Skills &amp; Expertise</h2>
+  </div>
+  <div class="skills-outer">
+
+    <div class="skill-cat fade-in">
+      <div class="skill-cat-title">BI &amp; Visualization</div>
+      <div class="skill-list">
+        <div class="skill-row"><span class="skill-name">Tableau</span><div class="skill-bar"><div class="skill-fill" style="width:97%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Looker</span><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Power BI</span><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">DOMO</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Preset / Python Viz</span><div class="skill-bar"><div class="skill-fill" style="width:76%"></div></div></div>
+      </div>
     </div>
-    <div class="edu-grid fi">
+
+    <div class="skill-cat fade-in">
+      <div class="skill-cat-title">Data Engineering</div>
+      <div class="skill-list">
+        <div class="skill-row"><span class="skill-name">SQL</span><div class="skill-bar"><div class="skill-fill" style="width:96%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Python</span><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">ETL / Data Pipelines</span><div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">dbt</span><div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Alteryx</span><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+      </div>
+    </div>
+
+    <div class="skill-cat fade-in">
+      <div class="skill-cat-title">Cloud &amp; Databases</div>
+      <div class="skill-list">
+        <div class="skill-row"><span class="skill-name">Snowflake</span><div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Databricks</span><div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">AWS Redshift</span><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Google Cloud Platform</span><div class="skill-bar"><div class="skill-fill" style="width:75%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Azure ML Studio</span><div class="skill-bar"><div class="skill-fill" style="width:72%"></div></div></div>
+      </div>
+    </div>
+
+    <div class="skill-cat fade-in">
+      <div class="skill-cat-title">Analytics &amp; ML</div>
+      <div class="skill-list">
+        <div class="skill-row"><span class="skill-name">Market Mix Modelling</span><div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Forecasting (FB Prophet)</span><div class="skill-bar"><div class="skill-fill" style="width:86%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Random Forest / ML</span><div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">A/B Testing</span><div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div></div>
+        <div class="skill-row"><span class="skill-name">Google Analytics</span><div class="skill-bar"><div class="skill-fill" style="width:78%"></div></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== CERTIFICATIONS ===== -->
+<section id="certifications">
+  <div class="fade-in">
+    <div class="section-label">Credentials</div>
+    <h2>Licenses &amp;<br>Certifications</h2>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-card fade-in">
+      <div class="cert-icon">❄️</div>
+      <div>
+        <div class="cert-name">SnowPro Core Certified</div>
+        <div class="cert-issuer">Snowflake</div>
+      </div>
+    </div>
+    <div class="cert-card fade-in">
+      <div class="cert-icon">📊</div>
+      <div>
+        <div class="cert-name">Tableau Certified Data Analyst</div>
+        <div class="cert-issuer">Tableau / Salesforce</div>
+      </div>
+    </div>
+    <div class="cert-card fade-in">
+      <div class="cert-icon">⚙️</div>
+      <div>
+        <div class="cert-name">Alteryx Certified</div>
+        <div class="cert-issuer">Alteryx</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDUCATION ===== -->
+<section id="education">
+  <div class="fade-in">
+    <div class="section-label">Academic Background</div>
+    <h2>Education</h2>
+  </div>
+  <div class="edu-timeline">
+
+    <!-- MS — most recent -->
+    <div class="edu-entry fade-in">
+      <div class="edu-spine">
+        <div class="edu-dot"></div>
+        <div class="edu-line"></div>
+      </div>
       <div class="edu-card">
+        <span class="edu-year-tag">Dec 2019</span>
         <div class="edu-school">University of South Florida · Tampa, FL</div>
-        <div class="edu-deg">Master of Science in Data Science</div>
-        <div class="edu-year">Graduated December 2019</div>
-        <div class="edu-detail">Engineering Analytics · Statistical Design Models · Design of Industrial Info Systems · Data Warehousing</div>
-        <span class="edu-gpa">GPA: 4.0 / 4.0</span>
+        <div class="edu-degree">Master of Science in Data Science</div>
+        <div class="edu-detail">Engineering Analytics · Statistical Design Models · Design of Industrial Information Systems · Data Warehousing</div>
+        <span class="gpa">GPA: 4.0 / 4.0</span>
+      </div>
+    </div>
+
+    <!-- BE -->
+    <div class="edu-entry fade-in">
+      <div class="edu-spine">
+        <div class="edu-dot"></div>
       </div>
       <div class="edu-card">
+        <span class="edu-year-tag">May 2014</span>
         <div class="edu-school">Maharaja Sayajirao University of Baroda · India</div>
-        <div class="edu-deg">Bachelor of Mechanical Engineering</div>
-        <div class="edu-year">Graduated May 2014</div>
-        <div class="edu-detail">Strong quantitative and engineering foundation underpinning analytical and systems-level thinking.</div>
-        <span class="edu-gpa">GPA: 3.64 / 4.0</span>
-      </div>
-      <div class="edu-card">
-        <div class="edu-school">Snowflake</div>
-        <div class="edu-deg">SnowPro Core Certified</div>
-        <div class="edu-year">Professional Certification</div>
-        <div class="edu-detail">Certified expertise in Snowflake's cloud data platform — architecture, data loading, performance optimization, and Snowflake Cortex (GenAI).</div>
-      </div>
-      <div class="edu-card">
-        <div class="edu-school">Tableau · Alteryx</div>
-        <div class="edu-deg">Tableau Certified Data Analyst · Alteryx Certified</div>
-        <div class="edu-year">Professional Certifications</div>
-        <div class="edu-detail">Dual certifications validating expert-level proficiency in Tableau data visualization and Alteryx data prep and analytics workflows.</div>
+        <div class="edu-degree">Bachelor of Mechanical Engineering</div>
+        <div class="edu-detail">Strong quantitative and systems engineering foundation that underpins a rigorous, data-first analytical mindset.</div>
+        <span class="gpa">GPA: 3.64 / 4.0</span>
       </div>
     </div>
-  </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="fi">
-      <div class="sec-label" style="justify-content:center;">Get in Touch</div>
-      <h2>Let's Connect.</h2>
-      <p class="contact-sub">Open to new opportunities in BI, Data Engineering, and Analytics consulting. Let's talk.</p>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="fade-in">
+    <div class="section-label" style="justify-content:center;">Get in Touch</div>
+    <h2>Let's Connect.</h2>
+    <p class="contact-sub">Open to new opportunities in BI leadership, Data Engineering, and Analytics. Let's talk.</p>
+  </div>
+  <div class="contact-cards">
+    <a href="mailto:vatsalgandhi93@gmail.com" class="contact-card fade-in">
+      <div class="contact-icon">✉️</div>
+      <div><div class="contact-type">Email</div><div class="contact-value">vatsalgandhi93@gmail.com</div></div>
+    </a>
+    <a href="tel:+18135857346" class="contact-card fade-in">
+      <div class="contact-icon">📞</div>
+      <div><div class="contact-type">Phone</div><div class="contact-value">(813) 585-7346</div></div>
+    </a>
+    <a href="https://www.linkedin.com/in/vatsalgandhi93/" target="_blank" class="contact-card fade-in">
+      <div class="contact-icon">💼</div>
+      <div><div class="contact-type">LinkedIn</div><div class="contact-value">vatsalgandhi93</div></div>
+    </a>
+    <div class="contact-card fade-in">
+      <div class="contact-icon">📍</div>
+      <div><div class="contact-type">Location</div><div class="contact-value">Columbia, MD</div></div>
     </div>
-    <div class="contact-row fi">
-      <a href="mailto:vatsalgandhi93@gmail.com" class="contact-card">
-        <div class="c-ic">✉️</div>
-        <div><div class="c-type">Email</div><div class="c-val">vatsalgandhi93@gmail.com</div></div>
-      </a>
-      <a href="tel:+18135857346" class="contact-card">
-        <div class="c-ic">📞</div>
-        <div><div class="c-type">Phone</div><div class="c-val">(813) 585-7346</div></div>
-      </a>
-      <a href="https://www.linkedin.com/in/vatsalgandhi93/" target="_blank" class="contact-card">
-        <div class="c-ic">💼</div>
-        <div><div class="c-type">LinkedIn</div><div class="c-val">vatsalgandhi93</div></div>
-      </a>
-      <div class="contact-card">
-        <div class="c-ic">📍</div>
-        <div><div class="c-type">Location</div><div class="c-val">Columbia, MD</div></div>
-      </div>
-    </div>
-    <a href="https://www.linkedin.com/in/vatsalgandhi93/" target="_blank" class="btn btn-primary fi">Connect on LinkedIn →</a>
-  </section>
+  </div>
+  <a href="https://www.linkedin.com/in/vatsalgandhi93/" target="_blank" class="btn btn-primary fade-in">Connect on LinkedIn →</a>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <span class="f-mono">© 2026 Vatsal Gandhi</span>
-    <span>Lead BI Analyst · Data Engineer · Columbia, MD</span>
-    <span class="f-mono">vatsalgandhi93@gmail.com</span>
-  </footer>
+<!-- ===== FOOTER ===== -->
+<footer>
+  <span class="footer-mono">© 2026 Vatsal Gandhi</span>
+  <span>Lead BI Analyst · Snowflake · Tableau · dbt · Columbia, MD</span>
+  <span class="footer-mono">vatsalgandhi93@gmail.com</span>
+</footer>
 
-  <script>
-    const io = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
-    }, { threshold: 0.08 });
-    document.querySelectorAll('.fi').forEach((el, i) => {
-      el.style.transitionDelay = `${(i % 4) * 0.08}s`;
-      io.observe(el);
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
     });
-  </script>
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-in').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.04) + 's';
+    obs.observe(el);
+  });
+</script>
 </body>
 </html>
