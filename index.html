@@ -3,642 +3,362 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vatsal Gandhi — Lead BI Analyst</title>
+<title>Vatsal Gandhi — BI & Data Engineering</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0d0f12;
-    --bg2: #13161b;
-    --bg3: #1a1e26;
-    --border: rgba(255,255,255,0.07);
-    --border2: rgba(255,255,255,0.12);
-    --text: #e8eaf0;
-    --text2: #8b91a0;
-    --text3: #555d6e;
-    --accent: #00e0a0;
-    --accent2: #00b880;
-    --accent-dim: rgba(0,224,160,0.08);
-    --accent-dim2: rgba(0,224,160,0.15);
-    --blue: #4fa8ff;
-    --blue-dim: rgba(79,168,255,0.08);
-    --amber: #f0a040;
-    --amber-dim: rgba(240,160,64,0.08);
-    --coral: #ff6b6b;
-  }
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    font-size: 16px;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 2rem; height: 60px;
-    background: rgba(13,15,18,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    font-family: 'DM Mono', monospace;
-    font-size: 14px; font-weight: 500;
-    color: var(--accent);
-    letter-spacing: 0.05em;
-    text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    font-size: 13px; color: var(--text2); text-decoration: none;
-    letter-spacing: 0.03em; transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--accent); }
-
-  /* LAYOUT */
-  main { max-width: 860px; margin: 0 auto; padding: 0 2rem; }
-  section { padding: 5rem 0; }
-
-  /* HERO */
-  #hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    padding-top: 80px;
-    border-bottom: 1px solid var(--border);
-  }
-  .hero-eyebrow {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px; color: var(--accent);
-    letter-spacing: 0.12em; text-transform: uppercase;
-    margin-bottom: 1.5rem;
-    display: flex; align-items: center; gap: 0.75rem;
-  }
-  .hero-eyebrow::before {
-    content: '';
-    display: inline-block; width: 24px; height: 1px;
-    background: var(--accent);
-  }
-  h1.hero-name {
-    font-size: clamp(2.4rem, 6vw, 4rem);
-    font-weight: 600; line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: var(--text); margin-bottom: 0.5rem;
-  }
-  .hero-title {
-    font-size: clamp(1.1rem, 3vw, 1.5rem);
-    font-weight: 300; color: var(--text2);
-    margin-bottom: 2rem;
-    letter-spacing: 0.01em;
-  }
-  .hero-title span { color: var(--accent); font-weight: 500; }
-  .hero-desc {
-    font-size: 15px; color: var(--text2);
-    max-width: 560px; line-height: 1.8;
-    margin-bottom: 2.5rem;
-  }
-  .hero-certs {
-    display: flex; flex-wrap: wrap; gap: 0.5rem;
-    margin-bottom: 2.5rem;
-  }
-  .cert-pill {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px; letter-spacing: 0.05em;
-    padding: 4px 12px; border-radius: 100px;
-    border: 1px solid var(--accent2);
-    color: var(--accent); background: var(--accent-dim);
-  }
-  .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
-  .btn {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-size: 13px; font-weight: 500;
-    padding: 10px 20px; border-radius: 6px;
-    text-decoration: none; transition: all 0.2s;
-    letter-spacing: 0.02em;
-  }
-  .btn-primary {
-    background: var(--accent); color: #0d0f12;
-  }
-  .btn-primary:hover { background: #00f5b0; }
-  .btn-ghost {
-    border: 1px solid var(--border2); color: var(--text2);
-  }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
-
-  /* SECTION HEADINGS */
-  .section-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--text3); margin-bottom: 0.75rem;
-  }
-  h2.section-heading {
-    font-size: 1.6rem; font-weight: 600;
-    color: var(--text); margin-bottom: 2.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  /* SKILLS */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1px; background: var(--border);
-    border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
-  }
-  .skill-block {
-    background: var(--bg2); padding: 1.5rem;
-  }
-  .skill-block-title {
-    font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--accent);
-    margin-bottom: 0.75rem;
-  }
-  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-  .skill-tag {
-    font-size: 12px; padding: 3px 9px;
-    background: var(--bg3); color: var(--text2);
-    border: 1px solid var(--border2); border-radius: 4px;
-  }
-
-  /* EXPERIENCE */
-  .exp-list { display: flex; flex-direction: column; gap: 1px; }
-  .exp-item {
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 10px; margin-bottom: 1rem; overflow: hidden;
-  }
-  .exp-header {
-    padding: 1.5rem;
-    display: flex; align-items: flex-start;
-    justify-content: space-between; gap: 1rem;
-    cursor: pointer;
-  }
-  .exp-header:hover { background: var(--bg3); }
-  .exp-company {
-    font-size: 15px; font-weight: 600; color: var(--text);
-    margin-bottom: 2px;
-  }
-  .exp-role {
-    font-size: 13px; color: var(--accent); font-weight: 500;
-  }
-  .exp-meta {
-    display: flex; flex-direction: column; align-items: flex-end;
-    gap: 4px; flex-shrink: 0;
-  }
-  .exp-date {
-    font-family: 'DM Mono', monospace;
-    font-size: 11px; color: var(--text3); letter-spacing: 0.04em;
-  }
-  .exp-location {
-    font-size: 11px; color: var(--text3);
-  }
-  .exp-body {
-    padding: 0 1.5rem 1.5rem;
-    display: none;
-  }
-  .exp-body.open { display: block; }
-  .exp-body ul { list-style: none; padding: 0; }
-  .exp-body ul li {
-    font-size: 14px; color: var(--text2); padding: 6px 0;
-    padding-left: 1.25rem; position: relative;
-    border-top: 1px solid var(--border); line-height: 1.65;
-  }
-  .exp-body ul li::before {
-    content: '→'; position: absolute; left: 0;
-    color: var(--accent); font-size: 12px; top: 8px;
-  }
-  .exp-highlight {
-    display: inline; background: var(--accent-dim);
-    color: var(--accent); padding: 1px 5px; border-radius: 3px;
-    font-size: 12px; font-weight: 500; margin-right: 4px;
-  }
-  .expand-icon {
-    color: var(--text3); font-size: 18px; transition: transform 0.2s;
-    flex-shrink: 0; margin-top: 4px;
-  }
-  .exp-item.open .expand-icon { transform: rotate(45deg); }
-
-  /* PROJECTS (future) */
-  .project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1rem;
-  }
-  .project-card {
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 10px; padding: 1.5rem;
-    text-decoration: none; display: block;
-    transition: border-color 0.2s, transform 0.15s;
-  }
-  .project-card:hover {
-    border-color: var(--accent); transform: translateY(-2px);
-  }
-  .project-icon {
-    width: 36px; height: 36px; border-radius: 8px;
-    background: var(--accent-dim); display: flex;
-    align-items: center; justify-content: center;
-    margin-bottom: 1rem; font-size: 18px;
-  }
-  .project-name {
-    font-size: 14px; font-weight: 600; color: var(--text);
-    margin-bottom: 6px;
-  }
-  .project-desc { font-size: 13px; color: var(--text2); line-height: 1.6; }
-  .project-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 1rem; }
-  .project-tag {
-    font-size: 11px; padding: 2px 8px;
-    border-radius: 100px; background: var(--bg3);
-    border: 1px solid var(--border2); color: var(--text3);
-  }
-
-  /* EDUCATION */
-  .edu-list { display: flex; flex-direction: column; gap: 1rem; }
-  .edu-item {
-    display: flex; gap: 1.25rem;
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 10px; padding: 1.25rem 1.5rem;
-    align-items: flex-start;
-  }
-  .edu-badge {
-    width: 40px; height: 40px; border-radius: 8px;
-    background: var(--blue-dim); border: 1px solid rgba(79,168,255,0.2);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; font-size: 16px;
-  }
-  .edu-school { font-size: 14px; font-weight: 600; color: var(--text); }
-  .edu-degree { font-size: 13px; color: var(--text2); margin-top: 2px; }
-  .edu-meta { display: flex; gap: 1rem; margin-top: 6px; }
-  .edu-date { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); }
-  .edu-gpa {
-    font-size: 11px; padding: 2px 8px;
-    background: var(--accent-dim); color: var(--accent);
-    border-radius: 100px; font-weight: 600; letter-spacing: 0.03em;
-  }
-
-  /* CONTACT */
-  .contact-row {
-    display: flex; flex-wrap: wrap; gap: 1rem;
-    padding-top: 1rem;
-  }
-  .contact-card {
-    display: flex; align-items: center; gap: 10px;
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: 8px; padding: 0.875rem 1.25rem;
-    text-decoration: none; color: var(--text2);
-    font-size: 13px; transition: border-color 0.2s, color 0.2s;
-  }
-  .contact-card:hover { border-color: var(--accent); color: var(--accent); }
-  .contact-card svg { width: 16px; height: 16px; flex-shrink: 0; }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 2rem;
-    text-align: center;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px; color: var(--text3);
-    letter-spacing: 0.06em;
-  }
-
-  /* DIVIDER */
-  .dot-divider {
-    display: flex; align-items: center; gap: 1rem;
-    margin-bottom: 0.75rem;
-  }
-  .dot-divider span {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; color: var(--accent); letter-spacing: 0.12em;
-  }
-
-  @media (max-width: 600px) {
-    main { padding: 0 1.25rem; }
-    nav { padding: 0 1.25rem; }
-    .nav-links { display: none; }
-    .exp-header { flex-direction: column; }
-    .exp-meta { align-items: flex-start; }
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#0d0f12;--bg2:#13161b;--bg3:#1c2028;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.11);
+  --text:#f5f7fa;--text2:#d8dce8;--text3:#a0a8b8;
+  --accent:#00e0a0;--accent2:#00b880;
+  --adim:rgba(0,224,160,0.09);
+  --blue:#5aaeff;--bdim:rgba(90,174,255,0.09);
+  --amber:#f0a848;--amdim:rgba(240,168,72,0.09);
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;background:rgba(13,15,18,0.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-monogram{font-family:'DM Mono',monospace;font-size:14px;font-weight:500;color:#0b0d10;background:var(--accent);width:32px;height:32px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-chips{display:flex;gap:6px}
+.nav-chip{font-size:11px;letter-spacing:0.03em;color:var(--text3);padding:3px 9px;border:1px solid var(--border2);border-radius:100px;background:var(--bg2);transition:color 0.2s,border-color 0.2s}
+.nav-chip:hover{color:var(--accent);border-color:rgba(0,224,160,0.3)}
+.nav-links{display:flex;gap:1.75rem;list-style:none}
+.nav-links a{font-size:13px;color:var(--text2);text-decoration:none;letter-spacing:0.02em;transition:color 0.2s}
+.nav-links a:hover{color:var(--accent)}
+#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:100px 3rem 5rem;max-width:1100px;margin:0 auto}
+.hero-location{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.14em;color:var(--text3);text-transform:uppercase;margin-bottom:2rem;display:flex;align-items:center;gap:8px}
+.hero-location::before{content:'';width:20px;height:1px;background:var(--text3);display:inline-block}
+h1.hero-name{font-size:clamp(3rem,7vw,5.5rem);font-weight:600;line-height:1.0;letter-spacing:-0.03em;color:#ffffff;margin-bottom:0.6rem}
+.hero-name em{color:var(--accent);font-style:normal}
+.hero-subtitle{font-size:clamp(1rem,2.2vw,1.3rem);font-weight:300;color:var(--text2);letter-spacing:0.01em;margin-bottom:2.5rem}
+.hero-para{font-size:15px;color:var(--text2);max-width:600px;line-height:1.9;margin-bottom:3rem}
+.impact-bar{display:flex;flex-wrap:wrap;gap:0;border:1px solid var(--border2);border-radius:12px;overflow:hidden;margin-bottom:3rem;max-width:680px}
+.impact-stat{flex:1;min-width:130px;padding:1.25rem 1.5rem;border-right:1px solid var(--border2)}
+.impact-stat:last-child{border-right:none}
+.impact-num{font-size:1.8rem;font-weight:600;color:var(--accent);letter-spacing:-0.02em;line-height:1}
+.impact-label{font-size:11px;color:var(--text3);margin-top:4px;letter-spacing:0.03em;line-height:1.4}
+.hero-ctas{display:flex;gap:0.875rem;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:500;letter-spacing:0.02em;padding:10px 22px;border-radius:7px;text-decoration:none;transition:all 0.18s;border:none;cursor:pointer}
+.btn-primary{background:var(--accent);color:#0b0d10}
+.btn-primary:hover{background:#10f5b4}
+.btn-outline{background:transparent;color:var(--text2);border:1px solid var(--border2)}
+.btn-outline:hover{border-color:rgba(0,224,160,0.4);color:var(--accent)}
+.cert-row{display:flex;flex-wrap:wrap;gap:6px;padding-top:1.5rem;border-top:1px solid var(--border)}
+.cert{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.06em;padding:4px 10px;border-radius:100px;background:var(--adim);border:1px solid rgba(0,224,160,0.2);color:var(--accent2)}
+.sw{padding:6rem 3rem;max-width:1100px;margin:0 auto}
+.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:0.5rem}
+.eline{width:32px;height:1px;background:var(--accent)}
+.etext{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent)}
+h2.sh{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:600;color:#f0f2f7;letter-spacing:-0.02em;margin-bottom:3rem}
+.expertise-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--border2);border:1px solid var(--border2);border-radius:14px;overflow:hidden}
+.ec{background:var(--bg2);padding:1.75rem 1.5rem}
+.ec-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:17px}
+.i-teal{background:rgba(0,224,160,0.1);color:var(--accent)}
+.i-blue{background:var(--bdim);color:var(--blue)}
+.i-amber{background:var(--amdim);color:var(--amber)}
+.ec-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:0.5rem}
+.ec-body{font-size:12px;color:var(--text2);line-height:1.65}
+.tag-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:0.875rem}
+.tag{font-size:11px;padding:2px 8px;border-radius:4px;background:var(--bg3);border:1px solid var(--border2);color:var(--text3)}
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:1px;background:var(--border2)}
+.tl-item{position:relative;margin-bottom:3.5rem}
+.tl-item:last-child{margin-bottom:0}
+.tl-dot{position:absolute;left:-2.4rem;top:6px;width:10px;height:10px;border-radius:50%;border:2px solid var(--accent);background:var(--bg)}
+.tl-dot.active{background:var(--accent)}
+.tl-company{font-size:18px;font-weight:600;color:#f0f2f7;margin-bottom:2px}
+.tl-role{font-size:13px;color:var(--accent);font-weight:500;margin-bottom:4px}
+.tl-meta{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:0.75rem}
+.tl-date{font-family:'DM Mono',monospace;font-size:11px;color:var(--text3);letter-spacing:0.04em}
+.tl-loc{font-size:11px;color:var(--text3)}
+.tl-body{font-size:14px;color:var(--text2);line-height:1.8;max-width:680px}
+.hl-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px;margin-top:1.25rem}
+.hl{background:var(--bg2);border:1px solid var(--border);border-radius:9px;padding:0.875rem 1rem}
+.hl-client{font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent2);margin-bottom:3px}
+.hl-desc{font-size:12px;color:var(--text2);line-height:1.55}
+.hl-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}
+.hl-tag{font-size:10px;padding:1px 6px;border-radius:3px;background:var(--bg3);color:var(--text3);border:1px solid var(--border)}
+.work-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.wc{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:1.75rem;text-decoration:none;display:flex;flex-direction:column;gap:0.875rem;transition:border-color 0.2s,transform 0.15s}
+.wc:hover{border-color:rgba(0,224,160,0.3);transform:translateY(-3px)}
+.wc-num{font-family:'DM Mono',monospace;font-size:11px;color:var(--text3);letter-spacing:0.06em}
+.wc-title{font-size:15px;font-weight:600;color:#f0f2f7}
+.wc-desc{font-size:13px;color:var(--text2);line-height:1.65;flex:1}
+.wc-stack{display:flex;flex-wrap:wrap;gap:5px;padding-top:0.5rem;border-top:1px solid var(--border)}
+.wc-chip{font-size:10px;padding:2px 7px;border-radius:100px;background:var(--adim);color:var(--accent2);border:1px solid rgba(0,224,160,0.15)}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:3rem}
+.edu-item{display:flex;align-items:flex-start;gap:1rem;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1rem}
+.edu-badge{width:40px;height:40px;border-radius:8px;flex-shrink:0;background:var(--bdim);border:1px solid rgba(90,174,255,0.18);display:flex;align-items:center;justify-content:center;font-size:17px}
+.edu-school{font-size:14px;font-weight:600;color:var(--text)}
+.edu-deg{font-size:12px;color:var(--text2);margin-top:2px}
+.edu-row{display:flex;align-items:center;gap:8px;margin-top:6px}
+.edu-yr{font-family:'DM Mono',monospace;font-size:10px;color:var(--text3)}
+.edu-gpa{font-size:10px;padding:2px 8px;border-radius:100px;background:var(--adim);color:var(--accent);font-weight:600}
+.contact-list{display:flex;flex-direction:column;gap:8px}
+.cl{display:flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:0.75rem 1rem;text-decoration:none;color:var(--text2);font-size:13px;transition:border-color 0.2s,color 0.2s}
+.cl:hover{border-color:rgba(0,224,160,0.35);color:var(--accent)}
+.cl svg{width:15px;height:15px;flex-shrink:0;opacity:0.6}
+.writing-card{display:flex;align-items:flex-start;gap:1.25rem;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:1.25rem 1.5rem;text-decoration:none;transition:border-color 0.2s;margin-bottom:1rem}
+.writing-card:hover{border-color:rgba(0,224,160,0.3)}
+.wc-arr{font-family:'DM Mono',monospace;font-size:14px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.wc-wt{font-size:14px;font-weight:600;color:var(--text);margin-bottom:4px}
+.wc-wd{font-size:13px;color:var(--text2);line-height:1.6}
+footer{border-top:1px solid var(--border);padding:2rem 3rem;text-align:center;font-family:'DM Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:0.08em}
+hr.div{border:none;border-top:1px solid var(--border)}
+@media(max-width:700px){
+  nav{padding:0 1.25rem}
+  .nav-chips{display:none}
+  .nav-links{display:none}
+  #hero,.sw{padding-left:1.25rem;padding-right:1.25rem}
+  .two-col{grid-template-columns:1fr}
+  .hl-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <a href="#hero" class="nav-logo">VG</a>
+  <a href="#hero" class="nav-brand">
+    <span class="nav-monogram">VG</span>
+    <div class="nav-chips">
+      <span class="nav-chip">Data Engineering</span>
+      <span class="nav-chip">AI</span>
+      <span class="nav-chip">Business Intelligence</span>
+    </div>
+  </a>
   <ul class="nav-links">
-    <li><a href="#skills">Skills</a></li>
+    <li><a href="#expertise">Expertise</a></li>
     <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#education">Education</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#writing">Writing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
-<main>
+<section id="hero">
+  <div class="hero-location">Columbia, MD &nbsp;&middot;&nbsp; Open to new roles</div>
+  <h1 class="hero-name">Vatsal<br><em>Gandhi</em></h1>
+  <p class="hero-subtitle">Lead BI Analyst &amp; AI Reporting Architect</p>
+  <p class="hero-para">I build reporting systems that replace manual work with intelligence &mdash; agentic dashboards, predictive models, and data platforms that help leadership teams see what matters before they know to ask for it.</p>
+  <div class="impact-bar">
+    <div class="impact-stat"><div class="impact-num">8+</div><div class="impact-label">Years in BI &amp; data</div></div>
+    <div class="impact-stat"><div class="impact-num">5</div><div class="impact-label">Industries served</div></div>
+    <div class="impact-stat"><div class="impact-num">200+</div><div class="impact-label">Devs cert-mentored</div></div>
+    <div class="impact-stat"><div class="impact-num">4</div><div class="impact-label">Certifications</div></div>
+  </div>
+  <div class="hero-ctas">
+    <a href="mailto:vatsalgandhi93@gmail.com" class="btn btn-primary">Get in touch</a>
+    <a href="https://www.linkedin.com/in/vatsalgandhi93" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+    <a href="https://github.com/vatsalgandhi93" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+  </div>
+  <div class="cert-row">
+    <span class="cert">Anthropic Certified</span>
+    <span class="cert">SnowPro Core</span>
+    <span class="cert">Tableau Certified Data Analyst</span>
+    <span class="cert">Alteryx Core</span>
+  </div>
+</section>
 
-  <!-- HERO -->
-  <section id="hero">
-    <div class="hero-eyebrow">Available for new opportunities</div>
-    <h1 class="hero-name">Vatsal Gandhi</h1>
-    <p class="hero-title">Lead <span>Business Intelligence Analyst</span></p>
-    <p class="hero-desc">
-      Scaling AI-driven reporting and automated insight delivery systems across tech consulting, retail, healthcare, and telecom. Specializing in Tableau, Looker, Snowflake, and Google Cloud Platform.
-    </p>
-    <div class="hero-certs">
-      <span class="cert-pill">Anthropic Certified</span>
-      <span class="cert-pill">SnowPro Core</span>
-      <span class="cert-pill">Tableau Certified Data Analyst</span>
-      <span class="cert-pill">Alteryx Core</span>
+<hr class="div">
+
+<section id="expertise">
+  <div class="sw">
+    <div class="eyebrow"><span class="eline"></span><span class="etext">What I do</span></div>
+    <h2 class="sh">Expertise</h2>
+    <div class="expertise-grid">
+      <div class="ec">
+        <div class="ec-icon i-teal">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><rect x="2" y="2" width="7" height="7" rx="1.5"/><rect x="11" y="2" width="7" height="7" rx="1.5"/><rect x="2" y="11" width="7" height="7" rx="1.5"/><rect x="11" y="11" width="7" height="7" rx="1.5"/></svg>
+        </div>
+        <div class="ec-title">Business Intelligence</div>
+        <div class="ec-body">Executive dashboards, self-serve reporting layers, and stakeholder-facing visualization systems that drive decisions.</div>
+        <div class="tag-row"><span class="tag">Tableau</span><span class="tag">Looker</span><span class="tag">Power BI</span><span class="tag">DOMO</span></div>
+      </div>
+      <div class="ec">
+        <div class="ec-icon i-blue">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><polyline points="2,14 6,8 10,11 14,5 18,2"/><polyline points="14,2 18,2 18,6"/></svg>
+        </div>
+        <div class="ec-title">Data Engineering</div>
+        <div class="ec-body">Scalable ETL pipelines, dbt data models, and cloud-native warehousing built for reliability and speed.</div>
+        <div class="tag-row"><span class="tag">Snowflake</span><span class="tag">BigQuery</span><span class="tag">dbt</span><span class="tag">Python</span><span class="tag">SQL</span></div>
+      </div>
+      <div class="ec">
+        <div class="ec-icon i-amber">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><circle cx="10" cy="10" r="3"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.22 4.22l1.42 1.42M14.36 14.36l1.42 1.42M4.22 15.78l1.42-1.42M14.36 5.64l1.42-1.42"/></svg>
+        </div>
+        <div class="ec-title">AI &amp; Predictive Analytics</div>
+        <div class="ec-body">Agentic reporting interfaces, LLM-powered chatbots, and forecasting models that surface insight automatically.</div>
+        <div class="tag-row"><span class="tag">Snowflake Cortex</span><span class="tag">FB Prophet</span><span class="tag">Claude</span><span class="tag">Random Forest</span></div>
+      </div>
+      <div class="ec">
+        <div class="ec-icon i-teal">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18"><circle cx="10" cy="6" r="3"/><path d="M2 18c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        </div>
+        <div class="ec-title">Strategy &amp; Enablement</div>
+        <div class="ec-body">BI Centers of Excellence, certification programs, and thought leadership that scale data culture across organizations.</div>
+        <div class="tag-row"><span class="tag">CoE</span><span class="tag">Mentorship</span><span class="tag">Figma</span><span class="tag">Stakeholder mgmt</span></div>
+      </div>
     </div>
-    <div class="hero-links">
-      <a href="mailto:vatsalgandhi93@gmail.com" class="btn btn-primary">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Get in touch
+  </div>
+</section>
+
+<hr class="div">
+
+<section id="experience">
+  <div class="sw">
+    <div class="eyebrow"><span class="eline"></span><span class="etext">Career</span></div>
+    <h2 class="sh">Experience</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot active"></div>
+        <div class="tl-company">Blend360 LLC</div>
+        <div class="tl-role">Lead Analyst &ndash; Reporting &amp; Insights</div>
+        <div class="tl-meta"><span class="tl-date">Nov 2022 &ndash; Present</span><span class="tl-loc">Columbia, MD</span></div>
+        <p class="tl-body">Leading enterprise BI across telecom, retail, and insurance &mdash; from agentic AI interfaces to eight-dashboard cost transparency suites. Built a departmental SnowPro Core certification program and a BI Center of Excellence that reduced redundant reporting requests org-wide.</p>
+        <div class="hl-grid">
+          <div class="hl"><div class="hl-client">Verizon</div><div class="hl-desc">Agentic AI reporting interface for platform migration; 100+ stakeholders, Tableau to Looker / Qlik migration.</div><div class="hl-tags"><span class="hl-tag">Looker</span><span class="hl-tag">Qlik</span><span class="hl-tag">Agentic AI</span></div></div>
+          <div class="hl"><div class="hl-client">Under Armour</div><div class="hl-desc">Consignment &amp; invoice reconciliation suite for El Corte Ingl&eacute;s; Executive Dashboard with Tableau Pulse + Teams integration.</div><div class="hl-tags"><span class="hl-tag">Tableau</span><span class="hl-tag">Pulse</span><span class="hl-tag">MS Teams</span></div></div>
+          <div class="hl"><div class="hl-client">Blue Cross Blue Shield</div><div class="hl-desc">Full data model and eight Cost Transparency dashboards serving five U.S. insurance providers.</div><div class="hl-tags"><span class="hl-tag">Tableau</span><span class="hl-tag">Data Modeling</span><span class="hl-tag">Healthcare</span></div></div>
+          <div class="hl"><div class="hl-client">Blend360 Internal</div><div class="hl-desc">Snowflake Cortex hospitality chatbot for real-time insights + ratings forecasting; HubSpot pipeline ETL in DOMO.</div><div class="hl-tags"><span class="hl-tag">Snowflake Cortex</span><span class="hl-tag">DOMO</span><span class="hl-tag">ETL</span></div></div>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-company">Steel Supplements</div>
+        <div class="tl-role">Business Intelligence Analyst &ndash; Marketing</div>
+        <div class="tl-meta"><span class="tl-date">Jul 2020 &ndash; Nov 2022</span><span class="tl-loc">Sarasota, FL</span></div>
+        <p class="tl-body">Built market mix models that lifted ROAS and identified a new product category driving consistent monthly revenue growth. Automated large-scale e-commerce pipelines and built revenue forecasting models using FB Prophet with sub-7% RMSE.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-company">The Hertz Corporation</div>
+        <div class="tl-role">Data Science Intern &ndash; Revenue Management</div>
+        <div class="tl-meta"><span class="tl-date">May &ndash; Aug 2019</span><span class="tl-loc">Estero, FL</span></div>
+        <p class="tl-body">Random Forest classifier to detect illegitimate bookings; improved fleet utilization and pricing model efficiency, saving $41k within the first week of deployment.</p>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-company">Reliance Industries Ltd</div>
+        <div class="tl-role">Analyst</div>
+        <div class="tl-meta"><span class="tl-date">Jul 2014 &ndash; Jul 2018</span><span class="tl-loc">India</span></div>
+        <p class="tl-body">Tableau and SQL-based reporting across database structures; real-time insight delivery for operational problem-solving at scale.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<section id="work">
+  <div class="sw">
+    <div class="eyebrow"><span class="eline"></span><span class="etext">Selected projects</span></div>
+    <h2 class="sh">Featured work</h2>
+    <div class="work-grid">
+      <a href="https://github.com/vatsalgandhi93" target="_blank" rel="noopener" class="wc">
+        <div class="wc-num">01</div>
+        <div class="wc-title">Cost Transparency Suite</div>
+        <div class="wc-desc">Custom data model backing eight Tableau dashboards for five U.S. insurance providers including Blue Cross Blue Shield, surfacing cost-saving opportunities at scale.</div>
+        <div class="wc-stack"><span class="wc-chip">Tableau</span><span class="wc-chip">Data Modeling</span><span class="wc-chip">Healthcare</span></div>
       </a>
-      <a href="https://www.linkedin.com/in/vatsalgandhi93" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
-      <a href="https://github.com/vatsalgandhi93" target="_blank" rel="noopener" class="btn btn-ghost">GitHub</a>
+      <a href="https://github.com/vatsalgandhi93" target="_blank" rel="noopener" class="wc">
+        <div class="wc-num">02</div>
+        <div class="wc-title">Hospitality AI Chatbot</div>
+        <div class="wc-desc">Snowflake Cortex-powered agent delivering real-time hotel performance insights and predictive ratings forecasting via conversational AI.</div>
+        <div class="wc-stack"><span class="wc-chip">Snowflake Cortex</span><span class="wc-chip">Agentic AI</span><span class="wc-chip">Forecasting</span></div>
+      </a>
+      <a href="https://github.com/vatsalgandhi93" target="_blank" rel="noopener" class="wc">
+        <div class="wc-num">03</div>
+        <div class="wc-title">Verizon Migration Reporting</div>
+        <div class="wc-desc">End-to-end reporting solution for a major platform migration serving 100+ stakeholders, with an agentic AI interface and Tableau-to-Looker transition layer.</div>
+        <div class="wc-stack"><span class="wc-chip">Looker</span><span class="wc-chip">Qlik</span><span class="wc-chip">Agentic AI</span></div>
+      </a>
+      <a href="https://github.com/vatsalgandhi93" target="_blank" rel="noopener" class="wc">
+        <div class="wc-num">04</div>
+        <div class="wc-title">e-Commerce Revenue Forecasting</div>
+        <div class="wc-desc">Automated data pipeline and FB Prophet model for marketing spend optimization, achieving sub-7% RMSE and driving measurable monthly revenue growth.</div>
+        <div class="wc-stack"><span class="wc-chip">Python</span><span class="wc-chip">FB Prophet</span><span class="wc-chip">ETL</span></div>
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="dot-divider"><span>// 01</span></div>
-    <div class="section-label">Technical skills</div>
-    <h2 class="section-heading">What I work with</h2>
-    <div class="skills-grid">
-      <div class="skill-block">
-        <div class="skill-block-title">Core</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">SQL</span>
-          <span class="skill-tag">dbt</span>
-          <span class="skill-tag">ETL</span>
-          <span class="skill-tag">Statistics</span>
-        </div>
-      </div>
-      <div class="skill-block">
-        <div class="skill-block-title">Visualization</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Tableau</span>
-          <span class="skill-tag">Looker</span>
-          <span class="skill-tag">Power BI</span>
-          <span class="skill-tag">DOMO</span>
-          <span class="skill-tag">Google Apps Scripts</span>
-        </div>
-      </div>
-      <div class="skill-block">
-        <div class="skill-block-title">Data Platforms</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Snowflake</span>
-          <span class="skill-tag">BigQuery / GCP</span>
-          <span class="skill-tag">Databricks</span>
-          <span class="skill-tag">AWS Redshift</span>
-          <span class="skill-tag">Teradata</span>
-        </div>
-      </div>
-      <div class="skill-block">
-        <div class="skill-block-title">AI / ML</div>
-        <div class="skill-tags">
-          <span class="skill-tag">Snowflake Cortex</span>
-          <span class="skill-tag">FB Prophet</span>
-          <span class="skill-tag">Random Forest</span>
-          <span class="skill-tag">Agentic AI</span>
-          <span class="skill-tag">Anthropic Claude</span>
-        </div>
-      </div>
-    </div>
-  </section>
+<hr class="div">
 
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="dot-divider"><span>// 02</span></div>
-    <div class="section-label">Work history</div>
-    <h2 class="section-heading">Experience</h2>
-    <div class="exp-list">
+<section id="writing">
+  <div class="sw">
+    <div class="eyebrow"><span class="eline"></span><span class="etext">Thought leadership</span></div>
+    <h2 class="sh">Writing &amp; community</h2>
+    <a href="https://medium.com/@shashanklr14/bi-product-delivery-made-seamless-how-figma-facilitates-collaboration-and-feedback-from-0364ef1f627d" target="_blank" rel="noopener" class="writing-card">
+      <div class="wc-arr">&#8599;</div>
+      <div><div class="wc-wt">BI Product Delivery Made Seamless</div><div class="wc-wd">Co-authored piece on how Figma streamlines BI product delivery, stakeholder collaboration, and feedback loops &mdash; published on Medium.</div></div>
+    </a>
+    <a href="https://www.linkedin.com/pulse/preparing-snowpro-core-certification-2026-vatsal-gandhi-dtkqe/" target="_blank" rel="noopener" class="writing-card">
+      <div class="wc-arr">&#8599;</div>
+      <div><div class="wc-wt">SnowPro Core Certification Roadmap 2026</div><div class="wc-wd">Detailed preparation guide for the SnowPro Core exam, stemming from leading 200+ Blend360 employees through the certification.</div></div>
+    </a>
+  </div>
+</section>
 
-      <div class="exp-item" id="exp1">
-        <div class="exp-header" onclick="toggleExp('exp1')">
+<hr class="div">
+
+<section id="contact">
+  <div class="sw">
+    <div class="two-col">
+      <div>
+        <div class="eyebrow"><span class="eline"></span><span class="etext">Education</span></div>
+        <h2 class="sh">Background</h2>
+        <div class="edu-item">
+          <div class="edu-badge">&#127891;</div>
           <div>
-            <div class="exp-company">Blend360 LLC</div>
-            <div class="exp-role">Lead Analyst – Reporting & Insights</div>
-          </div>
-          <div class="exp-meta">
-            <span class="exp-date">Nov 2022 – Present</span>
-            <span class="exp-location">Columbia, MD</span>
-            <span class="expand-icon">+</span>
+            <div class="edu-school">University of South Florida</div>
+            <div class="edu-deg">M.S. in Data Science &middot; Tampa, FL</div>
+            <div class="edu-row"><span class="edu-yr">Dec 2019</span><span class="edu-gpa">GPA 4.0</span></div>
           </div>
         </div>
-        <div class="exp-body" id="exp1-body">
-          <ul>
-            <li><span class="exp-highlight">Verizon</span>Leading the reporting framework and execution of an agentic AI interface used for platform migration permissions by 100+ stakeholders; drove migration from Tableau to Looker and Qlik.</li>
-            <li><span class="exp-highlight">Under Armour</span>Designed and led the Consignment Modelling and Invoice Reconciliation Reporting Suite for El Corte Inglés, saving 20 man-hours per week and improving inventory availability.</li>
-            <li><span class="exp-highlight">Under Armour</span>Built an Executive Insight Dashboard for senior leadership; integrated Tableau Pulse with Microsoft Teams for chat-delivered insights.</li>
-            <li><span class="exp-highlight">Blue Cross Blue Shield</span>Owned the full data model and eight Cost Transparency dashboards serving five U.S. insurance providers, saving millions of dollars in costs.</li>
-            <li><span class="exp-highlight">Blend360</span>Built a hospitality chatbot agent using Snowflake Cortex for quick performance insights and future ratings forecasting via predictive AI.</li>
-            <li><span class="exp-highlight">Blend360</span>Led ETL and DOMO dashboard for the HubSpot deals pipeline, reducing 5 man-hours of weekly manual work for senior leadership.</li>
-            <li>Established a centralized BI Center of Excellence that reduced redundant reporting requests across the department.</li>
-            <li>Co-authored <em>BI Product Delivery Made Seamless</em> on leveraging Figma for BI product delivery. Led SnowPro Core certification drives for 200+ employees and published a detailed certification roadmap on LinkedIn.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-item" id="exp2">
-        <div class="exp-header" onclick="toggleExp('exp2')">
+        <div class="edu-item">
+          <div class="edu-badge">&#127963;</div>
           <div>
-            <div class="exp-company">Steel Supplements</div>
-            <div class="exp-role">Business Intelligence Analyst – Marketing</div>
-          </div>
-          <div class="exp-meta">
-            <span class="exp-date">Jul 2020 – Nov 2022</span>
-            <span class="exp-location">Sarasota, FL</span>
-            <span class="expand-icon">+</span>
-          </div>
-        </div>
-        <div class="exp-body" id="exp2-body">
-          <ul>
-            <li>Developed market mix modeling for marketing spend, increasing Return on Ad Spend and identifying a new product range that grew monthly revenue.</li>
-            <li>Built and automated large-scale e-commerce data pipelines with rigorous quality checks and daily sales tracking.</li>
-            <li>Built revenue forecasting models using FB Prophet, achieving less than 7% RMSE.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-item" id="exp3">
-        <div class="exp-header" onclick="toggleExp('exp3')">
-          <div>
-            <div class="exp-company">The Hertz Corporation</div>
-            <div class="exp-role">Data Science Intern – Revenue Management</div>
-          </div>
-          <div class="exp-meta">
-            <span class="exp-date">May 2019 – Aug 2019</span>
-            <span class="exp-location">Estero, FL</span>
-            <span class="expand-icon">+</span>
-          </div>
-        </div>
-        <div class="exp-body" id="exp3-body">
-          <ul>
-            <li>Built a Random Forest classifier to identify illegitimate customer bookings from future reservations using Tableau for pattern analysis.</li>
-            <li>Improved fleet utilization and pricing model efficiency; implementation saved $41k within the first week.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="exp-item" id="exp4">
-        <div class="exp-header" onclick="toggleExp('exp4')">
-          <div>
-            <div class="exp-company">Reliance Industries Ltd</div>
-            <div class="exp-role">Analyst</div>
-          </div>
-          <div class="exp-meta">
-            <span class="exp-date">Jul 2014 – Jul 2018</span>
-            <span class="exp-location">India</span>
-            <span class="expand-icon">+</span>
-          </div>
-        </div>
-        <div class="exp-body" id="exp4-body">
-          <ul>
-            <li>Utilized Tableau and SQL for data collection, analysis, and reporting to procure data from database structures and provide timely solutions to site problems.</li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="dot-divider"><span>// 03</span></div>
-    <div class="section-label">Selected work</div>
-    <h2 class="section-heading">Projects</h2>
-    <div class="project-grid">
-
-      <a href="https://github.com/vatsalgandhi93" target="_blank" rel="noopener" class="project-card">
-        <div class="project-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#00e0a0" stroke-width="1.5" width="20" height="20"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-        </div>
-        <div class="project-name">Cost Transparency Dashboard Suite</div>
-        <div class="project-desc">Eight Tableau dashboards serving five U.S. insurance providers including Blue Cross Blue Shield, built on a custom data model to surface cost-saving opportunities.</div>
-        <div class="project-tags">
-          <span class="project-tag">Tableau</span>
-          <span class="project-tag">Data Modeling</span>
-          <span class="project-tag">Healthcare</span>
-        </div>
-      </a>
-
-      <a href="https://github.com/vatsalgandhi93" target="_blank" rel="noopener" class="project-card">
-        <div class="project-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#4fa8ff" stroke-width="1.5" width="20" height="20"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/></svg>
-        </div>
-        <div class="project-name">Hospitality AI Chatbot Agent</div>
-        <div class="project-desc">A Snowflake Cortex-powered chatbot delivering real-time hotel performance insights and predictive ratings forecasting using agentic AI.</div>
-        <div class="project-tags">
-          <span class="project-tag">Snowflake Cortex</span>
-          <span class="project-tag">Agentic AI</span>
-          <span class="project-tag">Forecasting</span>
-        </div>
-      </a>
-
-      <a href="https://github.com/vatsalgandhi93" target="_blank" rel="noopener" class="project-card">
-        <div class="project-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#f0a040" stroke-width="1.5" width="20" height="20"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <div class="project-name">Verizon Migration Reporting Suite</div>
-        <div class="project-desc">End-to-end reporting solution for platform migration permissions, catering to 100+ stakeholders with a Tableau-to-Looker migration layer.</div>
-        <div class="project-tags">
-          <span class="project-tag">Looker</span>
-          <span class="project-tag">Qlik</span>
-          <span class="project-tag">Telecom</span>
-        </div>
-      </a>
-
-      <a href="https://medium.com/@shashanklr14/bi-product-delivery-made-seamless-how-figma-facilitates-collaboration-and-feedback-from-0364ef1f627d" target="_blank" rel="noopener" class="project-card">
-        <div class="project-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b6b" stroke-width="1.5" width="20" height="20"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </div>
-        <div class="project-name">BI Product Delivery Made Seamless</div>
-        <div class="project-desc">Co-authored thought leadership piece on leveraging Figma for BI product delivery, collaboration, and stakeholder feedback cycles.</div>
-        <div class="project-tags">
-          <span class="project-tag">Figma</span>
-          <span class="project-tag">Thought Leadership</span>
-          <span class="project-tag">Medium</span>
-        </div>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education">
-    <div class="dot-divider"><span>// 04</span></div>
-    <div class="section-label">Academic background</div>
-    <h2 class="section-heading">Education</h2>
-    <div class="edu-list">
-      <div class="edu-item">
-        <div class="edu-badge">🎓</div>
-        <div>
-          <div class="edu-school">University of South Florida, Tampa, FL</div>
-          <div class="edu-degree">Master of Science in Data Science</div>
-          <div class="edu-meta">
-            <span class="edu-date">Dec 2019</span>
-            <span class="edu-gpa">GPA 4.0</span>
+            <div class="edu-school">Maharaja Sayajirao University of Baroda</div>
+            <div class="edu-deg">B.E. in Mechanical Engineering &middot; India</div>
+            <div class="edu-row"><span class="edu-yr">May 2014</span></div>
           </div>
         </div>
       </div>
-      <div class="edu-item">
-        <div class="edu-badge">🏛️</div>
-        <div>
-          <div class="edu-school">Maharaja Sayajirao University of Baroda, India</div>
-          <div class="edu-degree">Bachelor of Mechanical Engineering</div>
-          <div class="edu-meta">
-            <span class="edu-date">May 2014</span>
-          </div>
+      <div>
+        <div class="eyebrow"><span class="eline"></span><span class="etext">Get in touch</span></div>
+        <h2 class="sh">Contact</h2>
+        <div class="contact-list">
+          <a href="mailto:vatsalgandhi93@gmail.com" class="cl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            vatsalgandhi93@gmail.com
+          </a>
+          <a href="tel:+18135857346" class="cl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.76-.76a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (813) 585-7346
+          </a>
+          <a href="https://www.linkedin.com/in/vatsalgandhi93" target="_blank" rel="noopener" class="cl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            linkedin.com/in/vatsalgandhi93
+          </a>
+          <a href="https://github.com/vatsalgandhi93" target="_blank" rel="noopener" class="cl">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            github.com/vatsalgandhi93
+          </a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="dot-divider"><span>// 05</span></div>
-    <div class="section-label">Get in touch</div>
-    <h2 class="section-heading">Contact</h2>
-    <div class="contact-row">
-      <a href="mailto:vatsalgandhi93@gmail.com" class="contact-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        vatsalgandhi93@gmail.com
-      </a>
-      <a href="tel:+18135857346" class="contact-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l.76-.76a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-        (813) 585-7346
-      </a>
-      <a href="https://www.linkedin.com/in/vatsalgandhi93" target="_blank" rel="noopener" class="contact-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        linkedin.com/in/vatsalgandhi93
-      </a>
-      <a href="https://github.com/vatsalgandhi93" target="_blank" rel="noopener" class="contact-card">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-        github.com/vatsalgandhi93
-      </a>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <span>vatsal gandhi &nbsp;·&nbsp; columbia, md &nbsp;·&nbsp; built with github pages</span>
-</footer>
-
-<script>
-function toggleExp(id) {
-  const item = document.getElementById(id);
-  const body = document.getElementById(id + '-body');
-  item.classList.toggle('open');
-  body.classList.toggle('open');
-}
-document.addEventListener('DOMContentLoaded', function() {
-  toggleExp('exp1');
-});
-</script>
+<footer>vatsal gandhi &nbsp;&middot;&nbsp; columbia, md &nbsp;&middot;&nbsp; built with github pages</footer>
 
 </body>
 </html>
